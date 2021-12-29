@@ -28,9 +28,14 @@ export class RegisterComponent implements OnInit {
     registerDto.email = this.exForm.get('email')?.value
     this.exForm.get('login')?.hasError('required')
     registerDto.password = this.exForm.get('password')?.value
+    let confirmPassword = this.exForm.get('confirmPassword')?.value
+    if(registerDto.password != confirmPassword){
+      this.exForm.get('confirmPassword')?.setErrors({'incorrect': true});
+      this.exForm.get('password')?.setErrors({'incorrect': true});
+      return
+    }
     this.authService.registerUser(registerDto).subscribe(
       res => {
-        console.log(res),
         this.router.navigate(['/login'])
       },
       err => {

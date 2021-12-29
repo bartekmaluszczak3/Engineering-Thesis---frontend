@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', res.token)
       },
       err => {
-        console.log()
+        console.log(err)
       this.status_code =  err.status
       }
     )

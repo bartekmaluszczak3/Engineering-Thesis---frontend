@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +10,10 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'front';
   router: Router
-  constructor(router: Router){
+  authService: AuthService
+  constructor(router: Router, authService: AuthService){
     this.router = router;
-  }
-
-  checkAuth(){
-    return localStorage.getItem("token") == null
+    this.authService = authService
   }
 
 }
