@@ -12,7 +12,7 @@ import { LoginDto } from './login.dto';
 export class LoginComponent implements OnInit {
   exForm!: FormGroup;
   constructor(private authService: AuthService, private router: Router) { }
-  status_code = 10
+  status_code = 200
 
   ngOnInit(): void {
     this.exForm = new FormGroup({

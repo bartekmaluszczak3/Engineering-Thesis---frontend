@@ -27,7 +27,7 @@
                 </div>
                 <button [disabled]="exForm.invalid" type="submit" class="btn btn-success w-100" (click)="loginUser()">Login</button>
             </form>
-            <div class="alert-login"  class="alert alert-danger" *ngIf ="status_code == 500 ">
+            <div class="alert-login"  class="alert alert-danger" *ngIf ="status_code != 200 ">
                 Nieprawidlowe dane
             </div>
         </div>

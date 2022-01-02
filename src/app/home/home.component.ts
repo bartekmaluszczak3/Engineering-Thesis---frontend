@@ -9,7 +9,7 @@ import { AnnouncementService } from '../announcement/announcement.service';
 })
 
 export class HomeComponent implements OnInit {
-  private announcementArray: any[] = []
+  announcementArray: any[] = []
   constructor(private announcementService: AnnouncementService) {
     this.announcementService = announcementService;
    }
@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
         console.log(this.announcementArray)
       },
       err =>{
-        console.log(err)
+        localStorage.removeItem('token')
       }
     )
   }
