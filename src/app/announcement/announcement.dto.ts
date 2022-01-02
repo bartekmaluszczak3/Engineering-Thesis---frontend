@@ -4,4 +4,5 @@ export class AnnouncementDto{
     title!: string;
     description!: string;
     price!: number   
+    brand!: string;
 }

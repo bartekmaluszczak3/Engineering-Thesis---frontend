@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { LoginDto } from './login.dto';
 
@@ -10,7 +11,7 @@ import { LoginDto } from './login.dto';
 })
 export class LoginComponent implements OnInit {
   exForm!: FormGroup;
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
   status_code = 10
 
   ngOnInit(): void {
@@ -28,6 +29,8 @@ export class LoginComponent implements OnInit {
     this.authService.loginUser(loginDto).subscribe(
       res => {
         localStorage.setItem('token', res.token)
+        this.router.navigate(['/home'])
+
       },
       err => {
         console.log(err)

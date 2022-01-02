@@ -9,26 +9,21 @@ import { AnnouncementService } from '../announcement/announcement.service';
 })
 
 export class HomeComponent implements OnInit {
+  private announcementArray: any[] = []
   constructor(private announcementService: AnnouncementService) {
     this.announcementService = announcementService;
    }
 
   ngOnInit(): void {
-    let announcementDto: AnnouncementDto = new AnnouncementDto;
-    announcementDto.city = "Lodz"
-    announcementDto.description = "chuj"
-    announcementDto.price = 12
-    announcementDto.title = "sadsa"
-    announcementDto.type = "CAR"
-    this.announcementService.create(announcementDto).subscribe(
-      res => {
-        console.log(res)
+    this.announcementService.getUser().subscribe(
+      res =>{
+        this.announcementArray = res
+        console.log(this.announcementArray)
       },
-      err => {
+      err =>{
         console.log(err)
       }
     )
-    console.log("elo")
   }
 
 }
