@@ -6,10 +6,11 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth/auth.service';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { AuthGuard } from './auth.guard';
 import { HomeComponent } from './home/home.component';
+import { AddComponent } from './add/add.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HomeComponent } from './home/home.component';
     RegisterComponent,
     LoginComponent,
     HomeComponent,
-    HomeComponent
+    HomeComponent,
+    AddComponent
   ],
   imports: [
     FormsModule,

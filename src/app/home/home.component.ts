@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AnnouncementDto } from '../announcement/announcement.dto';
-import { AnnouncementService } from '../announcement/announcement.service';
+import { HistoryService } from '../services/history/history.service';
 
 @Component({
   selector: 'app-home',
@@ -10,12 +9,12 @@ import { AnnouncementService } from '../announcement/announcement.service';
 
 export class HomeComponent implements OnInit {
   announcementArray: any[] = []
-  constructor(private announcementService: AnnouncementService) {
-    this.announcementService = announcementService;
+  constructor(private historyService: HistoryService) {
+    this.historyService = historyService;
    }
 
   ngOnInit(): void {
-    this.announcementService.getUser().subscribe(
+    this.historyService.get().subscribe(
       res =>{
         this.announcementArray = res
         console.log(this.announcementArray)
