@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ImageService } from '../services/image/image.service';
 
 @Component({
@@ -8,7 +9,8 @@ import { ImageService } from '../services/image/image.service';
 })
 export class AddImageComponent implements OnInit {
 
-  constructor(private imageService: ImageService) { }
+  constructor(private imageService: ImageService, private route: ActivatedRoute) { }
+  id: any
   selectedFile!: File
   retrievedImage: any;
   base64Data: any;
@@ -16,6 +18,7 @@ export class AddImageComponent implements OnInit {
   message: string | undefined;
   imageName: any;
   ngOnInit(): void {
+    this.id = this.route.snapshot.paramMap.get('id')
   }
 
 

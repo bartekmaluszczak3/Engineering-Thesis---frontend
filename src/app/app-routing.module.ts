@@ -50,7 +50,7 @@ const routes: Routes = [
     component: FavouriteComponent
   },
   {
-    path: 'add_image',
+    path: 'add_image/:id',
     component: AddImageComponent
   }
 ];

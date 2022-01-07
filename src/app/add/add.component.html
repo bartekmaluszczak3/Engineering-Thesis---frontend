@@ -40,7 +40,7 @@
                     <textarea (keyup)="autoGrowTextZone($event)" formControlName="description" id="description" name="description" rows="4" cols="50" class="form-control" ></textarea>
                 </div>
                 <div style="margin-top: 50px; width: 30%;">
-                    <button type="submit" class="btn btn-success w-100" (click)="addAnnouncement()">Dodaj</button>
+                    <button  [disabled]="exForm.invalid" type="submit" class="btn btn-success w-100" (click)="addAnnouncement()">Dalej</button>
                 </div>
             </form>
         </div>

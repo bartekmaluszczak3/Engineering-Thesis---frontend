@@ -14,8 +14,8 @@ export class ImageService {
     let headers = getHeaders()
     const uploadImageData = new FormData();
     uploadImageData.append('imageFile', selectedFile, selectedFile.name)
-    //let url = this.baseUrl + "/upload?file=" + uploadImageData + "&id=" + id
-    return this.http.post<any>('http://localhost:8080/image/upload', uploadImageData, {headers})
+    let url = this.baseUrl + "/upload?id=" + id
+    return this.http.post<any>(url, uploadImageData, {headers})
   }
 
   get(id:any){
