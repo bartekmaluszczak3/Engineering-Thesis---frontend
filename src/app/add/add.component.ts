@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AnnouncementDto } from '../services/announcement/announcement.dto';
 import { AnnouncementService } from '../services/announcement/announcement.service';
 import { BrandService } from '../services/brand/brand.service';
 import { CityService } from '../services/city/city.service';
@@ -48,7 +49,28 @@ export class AddComponent implements OnInit {
       }
     )
   }
+  autoGrowTextZone(e: any) {
+    e.target.style.height = "0px";
+    e.target.style.height = (e.target.scrollHeight + 25)+"px";
+  }
 
+  addAnnouncement(){
+    let announcementDto: AnnouncementDto = new AnnouncementDto;
+    announcementDto.brand = this.exForm.get('brand')?.value
+    announcementDto.city = this.exForm.get('city')?.value
+    announcementDto.description = this.exForm.get('description')?.value
+    announcementDto.price = this.exForm.get('price')?.value
+    announcementDto.title = this.exForm.get('title')?.value
+    announcementDto.type = this.exForm.get('type')?.value
+    this.announcementService.create(announcementDto).subscribe(
+      res =>{
+          console.log(res)
+      },
+      err =>{
+        console.log(err)
+      }
+    )
+  }
 }
 
 

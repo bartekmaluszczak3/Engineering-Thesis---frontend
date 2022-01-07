@@ -10,7 +10,7 @@ export class AnnouncementService {
 
 
   getUrl(mapping: string, params:Map<string, string>){
-    let url = this.baseUrl + mapping
+    let url = this.baseUrl + mapping + "?"
     params.forEach((value: string, key:string) =>{
       url+=key + "=" + value + "&"
     })
@@ -36,6 +36,18 @@ export class AnnouncementService {
   getUser(){
     let headers = getHeaders()
     return this.http.get<any>(this.baseUrl + "/user", {headers})
+  }
+
+  getById(id: any){
+    let headers = getHeaders()
+    let url = this.baseUrl + "/get_by_id?id="+id
+    return this.http.get<any>(url, {headers})
+  }
+
+  checkOwner(id: any){
+    let headers = getHeaders()
+    let url = this.baseUrl + "/check_ownership?id="+id
+    return this.http.get<any>(url, {headers})
   }
 
 }

@@ -11,6 +11,11 @@ import { TokenInterceptorService } from './token-interceptor.service';
 import { AuthGuard } from './auth.guard';
 import { HomeComponent } from './home/home.component';
 import { AddComponent } from './add/add.component';
+import { MyAnnouncementComponent } from './my_announcement/my-announcement.component';
+import { EditAnnouncementComponent } from './edit-announcement/edit-announcement.component';
+import { AnnouncementComponent } from './announcement/announcement.component';
+import { FavouriteComponent } from './favourite/favourite.component';
+import { AddImageComponent } from './add-image/add-image.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +24,12 @@ import { AddComponent } from './add/add.component';
     LoginComponent,
     HomeComponent,
     HomeComponent,
-    AddComponent
+    AddComponent,
+    MyAnnouncementComponent,
+    EditAnnouncementComponent,
+    AnnouncementComponent,
+    FavouriteComponent,
+    AddImageComponent
   ],
   imports: [
     FormsModule,

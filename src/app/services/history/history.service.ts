@@ -14,9 +14,10 @@ export class HistoryService {
     return this.http.get<any>(this.baseUrl + "/get", { headers })
   }
 
-  add(){
+  add(id: any){
     let headers = getHeaders()
-
+    let url = this.baseUrl + "/add?id=" + id
+    return this.http.post<any>(url, { headers })
   }
 
 }
