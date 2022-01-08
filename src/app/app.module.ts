@@ -16,6 +16,7 @@ import { EditAnnouncementComponent } from './edit-announcement/edit-announcement
 import { AnnouncementComponent } from './announcement/announcement.component';
 import { FavouriteComponent } from './favourite/favourite.component';
 import { AddImageComponent } from './add-image/add-image.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AddImageComponent } from './add-image/add-image.component';
     EditAnnouncementComponent,
     AnnouncementComponent,
     FavouriteComponent,
-    AddImageComponent
+    AddImageComponent,
+    EditProfileComponent,
   ],
   imports: [
     FormsModule,

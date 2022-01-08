@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { getHeaders } from 'src/app/shared/utils';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,16 @@ export class AuthService {
 
   getToken(){
     return localStorage.getItem('token')
+  }
+
+  update(phone:any, city: any){
+    let headers = getHeaders()
+    let url = this.baseUrl + "/update?phone=" + phone + "&city=" + city;
+    return this.http.post<any>(url, {headers})
+  }
+
+  getCity(){
+    let headers = getHeaders()
+    return this.http.get<any>(this.baseUrl + "/get_city", {headers})
   }
 }

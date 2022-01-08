@@ -39,6 +39,7 @@ export class AddImageComponent implements OnInit {
     this.imageService.get(1).subscribe(
       res=>{
         this.retrieveResonse = res;
+        console.log(res)
         this.base64Data = this.retrieveResonse.bytes;
         this.retrievedImage = 'data:image/JPEG;base64,' + this.base64Data;
       }

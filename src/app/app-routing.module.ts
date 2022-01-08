@@ -5,6 +5,7 @@ import { AddComponent } from './add/add.component';
 import { AnnouncementComponent } from './announcement/announcement.component';
 import { AuthGuard } from './auth.guard';
 import { EditAnnouncementComponent } from './edit-announcement/edit-announcement.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { FavouriteComponent } from './favourite/favourite.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -52,6 +53,10 @@ const routes: Routes = [
   {
     path: 'add_image/:id',
     component: AddImageComponent
+  },
+  {
+    path: 'edit_profile',
+    component: EditProfileComponent
   }
 ];
 
