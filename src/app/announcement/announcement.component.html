@@ -5,7 +5,7 @@
 		<aside class="col-sm-5 border-right">
 <article class="gallery-wrap"> 
 <div class="img-big-wrap">
-  <div> <a href="#"><img src="https://s9.postimg.org/tupxkvfj3/image.jpg"></a></div>
+  <div><img [src]="announcement.imageBytes" width="150" height="150" alt=""></div>
 </div> <!-- slider-product.// -->
 <div class="img-small-wrap">
   <div class="item-gallery"> <img src="https://s9.postimg.org/tupxkvfj3/image.jpg"> </div>
@@ -31,7 +31,7 @@
 </dl>
 <dl class="param param-feature">
   <dt>Marka</dt>
-  <dd>{{announcement.brand.name}}</dd>
+  <dd>{{announcement.brand}}</dd>
 </dl>  <!-- item-property-hor .// -->
 <dl class="param param-feature">
   <dt>Miasto</dt>
@@ -48,6 +48,4 @@
 		</aside> <!-- col.// -->
 	</div> <!-- row.// -->
 </div> <!-- card.// -->
-
-
 </div>

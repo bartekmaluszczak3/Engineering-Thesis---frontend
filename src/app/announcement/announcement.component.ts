@@ -10,20 +10,20 @@ import { HistoryService } from '../services/history/history.service';
   styleUrls: ['./announcement.component.css']
 })
 export class AnnouncementComponent implements OnInit {
-  private id: any
+  private id: any = this.route.snapshot.paramMap.get('id')
   isOwner: boolean = true
   favourite: boolean = false
-  announcement: any
+  announcement: any =   this.announcementService.getById(this.id).subscribe(
+    res=>{
+      this.announcement = res
+      this.announcement.imageBytes = "data:image/JPEG;base64," + res.imageBytes;
+      console.log(this.announcement)
+    }
+  )
   constructor( private route: ActivatedRoute, private announcementService: AnnouncementService, private historyService: HistoryService,
               private favouriteService: FavouriteService) { }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id')
-    this.announcementService.getById(this.id).subscribe(
-      res=>{
-        this.announcement = res
-      }
-    )
     this.historyService.add(this.id).subscribe(
       res=>{
         console.log(res)

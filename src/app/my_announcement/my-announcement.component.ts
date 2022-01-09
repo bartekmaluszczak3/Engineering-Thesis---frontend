@@ -14,6 +14,10 @@ export class MyAnnouncementComponent implements OnInit {
     this.announcementService.getUser().subscribe(
       res=>{
         this.announcementArray = res
+        this.announcementArray.forEach(element =>{
+          element.imageBytes = "data:image/JPEG;base64," + element.imageBytes;
+        })
+        console.log(this.announcementArray)
       },
       err=>{
         console.log(err)
