@@ -9,14 +9,15 @@ import { HistoryService } from '../services/history/history.service';
 
 export class HomeComponent implements OnInit {
   announcementArray: any[] = []
-  constructor(private historyService: HistoryService) {
-    this.historyService = historyService;
-   }
+  constructor(private historyService: HistoryService) {}
 
   ngOnInit(): void {
     this.historyService.get().subscribe(
       res =>{
         this.announcementArray = res
+        this.announcementArray.forEach(element =>{
+          element.imageBytes = "data:image/JPEG;base64," + element.imageBytes;
+        })
         console.log(this.announcementArray)
       },
       err =>{

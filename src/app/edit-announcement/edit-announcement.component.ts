@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AnnouncementDto } from '../services/announcement/announcement.dto';
 import { AnnouncementService } from '../services/announcement/announcement.service';
 import { BrandService } from '../services/brand/brand.service';
 import { CityService } from '../services/city/city.service';
@@ -15,6 +16,7 @@ export class EditAnnouncementComponent implements OnInit {
   exForm!: FormGroup;
   cityArray: any[] = []
   brandArray: any[] = []
+  typeArray: any[] = []
   constructor(private route: ActivatedRoute, private announcementService: AnnouncementService,
               private cityService: CityService, private brandService: BrandService,
               private router: Router ) { }
@@ -23,12 +25,19 @@ export class EditAnnouncementComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id')
     let announcement;
     this.exForm = new FormGroup({
-      type: new FormControl(null, [Validators.required, Validators.minLength(5), Validators.maxLength(16)]),
+      type: new FormControl(null, [Validators.required]),
       city: new FormControl(null, [Validators.required]),
       title: new FormControl(null, Validators.required),
       description: new FormControl(null, Validators.required),
       price: new FormControl(null, Validators.required),
       brand: new FormControl(null, Validators.required),
+      year: new FormControl(null, Validators.required),
+      model: new FormControl(null, Validators.required),
+      power: new FormControl(null),
+      mileage: new FormControl(null),
+      firstOwner: new FormControl(null),
+      damaged: new FormControl(null)
+
     })
     this.announcementService.getById(this.id).subscribe(
       res=>{
@@ -39,7 +48,12 @@ export class EditAnnouncementComponent implements OnInit {
         this.exForm.get('price')?.setValue(announcement.price)
         this.exForm.get('brand')?.setValue(announcement.brand)
         this.exForm.get('title')?.setValue(announcement.title)
-
+        this.exForm.get('year')?.setValue(announcement.year)
+        this.exForm.get('model')?.setValue(announcement.model)
+        this.exForm.get('power')?.setValue(announcement.power)
+        this.exForm.get('mileage')?.setValue(announcement.mileage)
+        this.exForm.get('firstOwner')?.setValue(announcement.firstOwner)
+        this.exForm.get('damaged')?.setValue(announcement.damaged)
       }
     )
     this.cityService.get().subscribe(
@@ -63,19 +77,25 @@ export class EditAnnouncementComponent implements OnInit {
 
       }
     )
+    this.typeArray = ['Auto', 'Motocykl', "Przyczepa", "Ciężarówka"]
   }
 
   editAnnouncement(){
-    let map: Map<string, string> = new Map
-    map.set('id', this.id)
-    map.set('type', this.exForm.get('type')?.value)
-    map.set('city', this.exForm.get('city')?.value)
-    map.set('price', this.exForm.get('price')?.value)
-    map.set('brand', this.exForm.get('brand')?.value)
-    map.set('title', this.exForm.get('title')?.value)
-    map.set('description', this.exForm.get('description')?.value)
-
-    this.announcementService.edit(map).subscribe(
+    let announcementDto: AnnouncementDto = new AnnouncementDto;
+    announcementDto.brand = this.exForm.get('brand')?.value
+    announcementDto.city = this.exForm.get('city')?.value
+    console.log(announcementDto.city);
+    announcementDto.description = this.exForm.get('description')?.value
+    announcementDto.price = this.exForm.get('price')?.value
+    announcementDto.title = this.exForm.get('title')?.value
+    announcementDto.type = this.exForm.get('type')?.value
+    announcementDto.year = this.exForm.get('year')?.value
+    announcementDto.model = this.exForm.get('model')?.value
+    announcementDto.power = this.exForm.get('power')?.value
+    announcementDto.mileage = this.exForm.get('mileage')?.value
+    announcementDto.firstOwner = this.exForm.get('firstOwner')?.value
+    announcementDto.damaged = this.exForm.get('damaged')?.value
+    this.announcementService.edit(this.id, announcementDto).subscribe(
       res =>{
        console.log(res)
       },
@@ -88,6 +108,17 @@ export class EditAnnouncementComponent implements OnInit {
   autoGrowTextZone(e: any) {
     e.target.style.height = "0px";
     e.target.style.height = (e.target.scrollHeight + 25)+"px";
+  }
+
+  addValidator(){
+    this.exForm.get('power')?.setValidators([Validators.required])
+    this.exForm.get('mileage')?.setValidators([Validators.required])
+  }
+
+  removeValidator(){
+    this.exForm.get('power')?.clearValidators
+    this.exForm.get('mileage')?.setValidators([Validators.required])
+
   }
 }
 

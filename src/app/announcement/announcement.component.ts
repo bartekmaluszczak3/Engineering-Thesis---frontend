@@ -33,10 +33,9 @@ export class AnnouncementComponent implements OnInit {
       res=>{
         this.isOwner = res
         console.log(this.isOwner)
+        if(this.isOwner == false)
+          this.announcementService.increaseView(this.id).subscribe()
       },
-      err=>{
-        console.log(err)
-      }
     )
 
     this.favouriteService.check(this.id).subscribe(

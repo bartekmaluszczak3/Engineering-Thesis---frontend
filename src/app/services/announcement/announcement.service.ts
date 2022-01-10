@@ -23,9 +23,10 @@ export class AnnouncementService {
     return this.http.post<any>(this.baseUrl + "/create", body, {headers})
   }
 
-  edit(params:Map<string, string>){
+  edit(id:any, announcementDto: any){
     let headers = getHeaders()
-    return this.http.put<any>(this.getUrl("/edit", params), {headers})
+    let url = this.baseUrl + "/edit?id="+id
+    return this.http.put<any>(url, announcementDto, {headers})
   }
   
   get(params:Map<string, string>){
@@ -48,6 +49,12 @@ export class AnnouncementService {
     let headers = getHeaders()
     let url = this.baseUrl + "/check_ownership?id="+id
     return this.http.get<any>(url, {headers})
+  }
+
+  increaseView(id: any){
+    let headers = getHeaders()
+    let url = this.baseUrl + "/add_viewed?id="+id
+    return this.http.put<any>(url, {headers})
   }
 
 }

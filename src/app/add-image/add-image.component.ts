@@ -28,7 +28,7 @@ export class AddImageComponent implements OnInit {
 
   public upload(){
     console.log(this.selectedFile)
-    this.imageService.upload(this.selectedFile, 1).subscribe((res) =>{
+    this.imageService.upload(this.selectedFile, this.id).subscribe((res) =>{
         console.log(res)
         this.message = "Uploaded";
       }
@@ -36,7 +36,7 @@ export class AddImageComponent implements OnInit {
   }
 
   public get(){
-    this.imageService.get(1).subscribe(
+    this.imageService.get(this.id).subscribe(
       res=>{
         this.retrieveResonse = res;
         console.log(res)

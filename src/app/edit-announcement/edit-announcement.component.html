@@ -10,15 +10,20 @@
                 </div>
                 <div class="mb-4"> 
                     <label class="form-label" for="price">Cena</label>
-                    <input style="width: 10%;" formControlName="price" type="price" class="form-control" id="price">
+                    <input style="width: 20%;" formControlName="price" type="number" class="form-control" id="price">
                     <small *ngIf="exForm.get('price')?.invalid && exForm.get('price')?.touched" class="form-control-invalid">Cena jest wymagana</small>                
                 </div>
 
 
                 <div class="mb-4" style="width: 30%;">
                     <label class="form-label" for="type">Typ</label>
-                    <input formControlName="type" type="type" class="form-control" id="type">
+                    <select formControlName="type" class="form-control" id="type">
+                        <option *ngFor="let element of typeArray">{{element}}</option>
+                    </select>
                     <small *ngIf="exForm.get('type')?.hasError('required') && exForm.get('type')?.touched" class="form-control-invalid">Typ jest wymagany</small>
+                    <span *ngIf="exForm.get('type')?.touched && exForm.get('type')?.value != 'Przyczepa'">{{addValidator()}}</span>
+                    <span *ngIf="exForm.get('type')?.touched && exForm.get('type')?.value == 'Przyczepa'">{{removeValidator()}}</span>
+
                 </div>
 
                 <div class="mb-4"  style="width: 30%;">
@@ -34,15 +39,48 @@
                         <option *ngFor="let element of cityArray">{{element}}</option>
                     </select>
                 </div>
-
                 <div class="mb-4">
                     <label class="form-label" for="description">Opis</label>
                     <textarea (keyup)="autoGrowTextZone($event)" formControlName="description" id="description" name="description" rows="4" cols="50" class="form-control" ></textarea>
+                    <small *ngIf="exForm.get('type')?.hasError('description') && exForm.get('description')?.touched" class="form-control-invalid">Opis jest wymagany</small>
+
                 </div>
+                <div class="mb-4"> 
+                    <label class="form-label" for="year">Rok</label>
+                    <input style="width: 20%;" formControlName="year" type="number" class="form-control" id="year">
+                    <small *ngIf="exForm.get('year')?.invalid && exForm.get('year')?.touched" class="form-control-invalid">Rok jest wymagany</small>                
+                </div>
+                <div class="mb-4"> 
+                    <label class="form-label" for="mdoel">Model</label>
+                    <input style="width: 30%;" formControlName="model" class="form-control" id="model">
+                    <small *ngIf="exForm.get('model')?.invalid && exForm.get('model')?.touched" class="form-control-invalid">Model jest wymagany</small>                
+                </div>
+
+                <div class="mb-4"> 
+                    <label class="form-label" for="firstOwner">Pierwszy właścicel</label>
+                    <input style="width: 10%; height: 20px;" formControlName="firstOwner" type="checkbox" id="firstOwner">
+                </div>
+
+                <div class="mb-4"> 
+                    <label class="form-label" for="firstOwner">Uszkodzony</label>
+                    <input style="width: 10%; height: 20px;" formControlName="damaged" type="checkbox" id="damaged">
+                </div>
+
+                <div class="mb-4" *ngIf="exForm.get('type')?.value != 'Przyczepa'"> 
+                    <label class="form-label" for="power">Moc(KM)</label>
+                    <input style="width: 10%;" formControlName="power" type="number" class="form-control" id="power">
+                </div>
+
+                <div class="mb-4" *ngIf="exForm.get('type')?.value != 'Przyczepa'">
+                    <label class="form-label" for="mileage">Przebieg</label>
+                    <input style="width: 30%;" formControlName="mileage" type="number" class="form-control" id="mileage">
+                </div>
+
                 <div style="margin-top: 50px; width: 30%;">
-                    <button type="submit" class="btn btn-success w-100" (click)="editAnnouncement()">Edytuj</button>
+                    <button  [disabled]="exForm.invalid" type="submit" class="btn btn-success w-100" (click)="editAnnouncement()">Dalej</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+

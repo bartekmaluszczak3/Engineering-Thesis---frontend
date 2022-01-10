@@ -16,6 +16,9 @@ export class FavouriteComponent implements OnInit {
       res=>{
           this.announcementArray = res
           console.log(this.announcementArray)
+          this.announcementArray.forEach(element =>{
+            element.imageBytes = "data:image/JPEG;base64," + element.imageBytes;
+          })
       },
       err=>{
           console.log(err)
