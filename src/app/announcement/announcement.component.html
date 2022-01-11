@@ -5,13 +5,12 @@
 		<aside class="col-sm-5 border-right">
 <article class="gallery-wrap"> 
 <div class="img-big-wrap">
-  <div><img [src]="announcement.imageBytes" style="max-width: 100%; width: 100%;" alt=""></div>
+  <div><a href = "announcement.imagesBytes[this.startIndex]" data-lightbox="image-1"> Image #1
+    <img  id="bigImage" [src]="announcement.imagesBytes[this.startIndex]" style="max-width: 100%; width: 100%;" alt="">
+  </a></div>
 </div> <!-- slider-product.// -->
 <div class="img-small-wrap">
-  <div class="item-gallery"> <img src="https://s9.postimg.org/tupxkvfj3/image.jpg"> </div>
-  <div class="item-gallery"> <img src="https://s9.postimg.org/tupxkvfj3/image.jpg"> </div>
-  <div class="item-gallery"> <img src="https://s9.postimg.org/tupxkvfj3/image.jpg"> </div>
-  <div class="item-gallery"> <img src="https://s9.postimg.org/tupxkvfj3/image.jpg"> </div>
+  <div class="item-gallery" *ngFor="let element of announcement.imagesBytes; index as i"> <img (click)="change(i)" [src]="this.announcement.imagesBytes[i]"> </div>
 </div> <!-- slider-nav.// -->
 </article> <!-- gallery-wrap .end// -->
 		</aside>

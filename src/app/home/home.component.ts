@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HistoryService } from '../services/history/history.service';
+import { mapImageList } from '../shared/utils';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,7 @@ export class HomeComponent implements OnInit {
       res =>{
         this.announcementArray = res
         this.announcementArray.forEach(element =>{
-          element.imageBytes = "data:image/JPEG;base64," + element.imageBytes;
+          element.imagesBytes = mapImageList(element.imagesBytes)
         })
         console.log(this.announcementArray)
       },
