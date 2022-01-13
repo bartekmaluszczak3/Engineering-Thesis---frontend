@@ -17,7 +17,8 @@ import { AnnouncementComponent } from './announcement/announcement.component';
 import { FavouriteComponent } from './favourite/favourite.component';
 import { AddImageComponent } from './add-image/add-image.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
-
+import { SearchComponent } from './search/search.component';
+import { LoggedUser } from './guard/LoggedUser';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +33,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     FavouriteComponent,
     AddImageComponent,
     EditProfileComponent,
+    SearchComponent,
   ],
   imports: [
     FormsModule,
@@ -44,7 +46,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true
-  }, AuthGuard],
+  }, AuthGuard, LoggedUser],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

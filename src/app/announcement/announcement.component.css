@@ -1,4 +1,7 @@
-
+body{
+    height: 100%;
+    background-color: green;
+}
 .gallery-wrap .img-big-wrap img {
     height: 450px;
     width: auto;

@@ -4,6 +4,7 @@ import { AddImageComponent } from './add-image/add-image.component';
 import { AddComponent } from './add/add.component';
 import { AnnouncementComponent } from './announcement/announcement.component';
 import { AuthGuard } from './auth.guard';
+import { LoggedUser } from './guard/LoggedUser';
 import { EditAnnouncementComponent } from './edit-announcement/edit-announcement.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { FavouriteComponent } from './favourite/favourite.component';
@@ -11,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { MyAnnouncementComponent } from './my_announcement/my-announcement.component';
 import { RegisterComponent } from './register/register.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {
@@ -32,7 +34,9 @@ const routes: Routes = [
   },
   {
     path: 'add',
-    component: AddComponent
+    component: AddComponent,
+    canActivate: [LoggedUser]
+
   },
   {
     path: 'my_announcement',
@@ -40,15 +44,18 @@ const routes: Routes = [
   },
   {
     path: 'edit_announcement/:id',
-    component: EditAnnouncementComponent
+    component: EditAnnouncementComponent,
+    canActivate: [LoggedUser]
   },
   {
     path: 'announcement/:id',
-    component: AnnouncementComponent
+    component: AnnouncementComponent,
   },
   {
     path: 'favourite',
-    component: FavouriteComponent
+    component: FavouriteComponent,
+    canActivate: [LoggedUser]
+
   },
   {
     path: 'add_image/:id',
@@ -56,7 +63,13 @@ const routes: Routes = [
   },
   {
     path: 'edit_profile',
-    component: EditProfileComponent
+    component: EditProfileComponent,
+    canActivate: [LoggedUser]
+
+  },
+  {
+    path: 'search',
+    component: SearchComponent
   }
 ];
 

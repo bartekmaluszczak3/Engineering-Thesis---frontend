@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs';
 import { getHeaders } from '../../shared/utils';
 @Injectable({
   providedIn: 'root'
@@ -9,9 +10,9 @@ export class AnnouncementService {
   constructor(private http: HttpClient) { }
 
 
-  getUrl(mapping: string, params:Map<string, string>){
+  getUrl(mapping: string, params:Map<String, String>){
     let url = this.baseUrl + mapping + "?"
-    params.forEach((value: string, key:string) =>{
+    params.forEach((value: String, key:String) =>{
       url+=key + "=" + value + "&"
     })
     return url.substring(0, url.length - 1)
@@ -29,9 +30,11 @@ export class AnnouncementService {
     return this.http.put<any>(url, announcementDto, {headers})
   }
   
-  get(params:Map<string, string>){
+  get(url: any){
     let headers = getHeaders()
-    return this.http.get<any>(this.getUrl("/get", params), {headers})
+    var re = /search/gi
+    let newUrl = this.baseUrl + url.replace(re, 'get')
+    return this.http.get<any>(newUrl, {headers})
   }
 
   getUser(){
@@ -55,6 +58,12 @@ export class AnnouncementService {
     let headers = getHeaders()
     let url = this.baseUrl + "/add_viewed?id="+id
     return this.http.put<any>(url, {headers})
+  }
+
+  search(params: Map<String, String>){
+    let headers = getHeaders()
+    let url = this.getUrl("/get", params)
+    return this.http.get<any>(url, {headers})
   }
 
 }

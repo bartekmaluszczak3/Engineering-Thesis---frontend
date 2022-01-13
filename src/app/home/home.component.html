@@ -1,203 +1,179 @@
-
 <div class="card-group container pb-5 mt-n2 mt-md-n3" style="margin-top: 50px;">
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-
-
-<div class="container">
-
-
-<div class="row" style="background-color: rgb(247, 247, 247);">
-	<aside class="col-sm-4">
-<div class="card" style="margin: 10px;">
-	<article class="card-group-item">
-		<header class="card-header">
-			<h6 class="title">Typ </h6>
-		</header>
-		<div class="filter-content">
-			<div class="card-body">
-			<form>
-				<label class="form-check">
-				  <input class="form-check-input" type="checkbox" value="">
-				  <span class="form-check-label">
-				    Auto
-				  </span>
-				</label> <!-- form-check.// -->
-				
-				<label class="form-check">
-				  <input class="form-check-input" type="checkbox" value="">
-				  <span class="form-check-label">
-				    Motocykl
-				  </span>
-				</label>  <!-- form-check.// -->
-				<label class="form-check">
-				  <input class="form-check-input" type="checkbox" value="">
-				  <span class="form-check-label">
-				    Przyczepa
-				  </span>
-
-				</label>  <!-- form-check.// -->
-				<label class="form-check">
-					<input class="form-check-input" type="checkbox" value="">
-					<span class="form-check-label">
-					  Ciężarówka
-					</span>
-				  </label>  <!-- form-check.// -->
-			</form>
-
-			</div> <!-- card-body.// -->
-		</div>
-	</article> <!-- card-group-item.// -->
-	<div>
-		
-	</div>
-	<article class="card-group-item">
-		<header class="card-header">
-			<h6 class="title">Stan </h6>
-		</header>
-		<div class="filter-content">
-			<div class="card-body">
-			<label class="form-check">
-			  <input class="form-check-input" type="radio" name="exampleRadio" value="">
-			  <span class="form-check-label">
-			    Brand new items
-			  </span>
-			</label>
-			<label class="form-check">
-			  <input class="form-check-input" type="radio" name="exampleRadio" value="">
-			  <span class="form-check-label">
-			    Some other option
-			  </span>
-			</label>
-			</div> <!-- card-body.// -->
-		</div>
-	</article> <!-- card-group-item.// -->
-</div> <!-- card.// -->
-
-
-
-
-	</aside> <!-- col.// -->
-
-	<aside class="col-sm-4">
-		<div class="card">
-			<article class="card-group-item">
-				<header class="card-header">
-					<h6 class="title">Marka </h6>
-				</header>
-				<div class="filter-content">
-					<div class="card-body">
-					<div class="form-row ">
-					<div class="form-group col-md-12">
-						<select class="form-control" id="type">
-							<option> elo</option>
-						</select>
+	<div class="container">
+  
+		<form [formGroup]="exForm">
+			<div class="row" style="background-color: rgb(247, 247, 247);">
+				<aside class="col-sm-4">
+			<div class="card" style="margin: 20px;">
+				<article class="card-group-item">
+					<header class="card-header">
+						<h6 class="title">Typ </h6>
+					</header>
+					<div class="filter-content">
+						<div class="card-body">
+							<label class="form-check">
+							  <input formControlName="type" class="form-check-input" type="radio" value="Auto" name="type">
+							  <span class="form-check-label">
+								Auto
+							  </span>
+							</label> <!-- form-check.// -->
+							
+							<label class="form-check">
+							  <input formControlName="type"class="form-check-input" type="radio" value="Motocykl" name="type">
+							  <span class="form-check-label">
+								Motocykl
+							  </span>
+							</label>  <!-- form-check.// -->
+							<label class="form-check">
+							  <input formControlName="type"class="form-check-input" type="radio" value="Przyczepa" name="type">
+							  <span class="form-check-label">
+								Przyczepa
+							  </span>
+			
+							</label>  <!-- form-check.// -->
+							<label class="form-check">
+								<input formControlName="type"class="form-check-input" type="radio" value="Ciezarowka" name="type">
+								<span class="form-check-label">
+								  Ciężarówka
+								</span>
+							  </label>  <!-- form-check.// -->
+						</div> <!-- card-body.// -->
 					</div>
+				</article> <!-- card-group-item.// -->
+				<article class="card-group-item">
+					<header class="card-header">
+						<h6 class="title">Stan </h6>
+					</header>
+					<div class="filter-content">
+						<div class="card-body">
+						<label class="form-check">
+						  <input formControlName="damaged" class="form-check-input" type="radio" name="damaged" value="true">
+						  <span class="form-check-label">
+							Uszkodzony
+						  </span>
+						</label>
+						<label class="form-check">
+						  <input formControlName="damaged" class="form-check-input" type="radio" name="damaged" value="false">
+						  <span class="form-check-label">
+							Nieuszkodzony
+						  </span>
+						</label>
+						</div> <!-- card-body.// -->
 					</div>
-					</div> <!-- card-body.// -->
-				</div>
-			</article> <!-- card-group-item.// -->
-			<article class="card-group-item">
-				<header class="card-header">
-					<h6 class="title">Miasto </h6>
-				</header>
-				<div class="filter-content">
-					<div class="card-body">
-					<div class="form-row">
-					<div class="form-group col-md-12">
-					<select class="form-control" id="type">
-							<option> elo</option>
-						</select>
-					</div>
+				</article> <!-- card-group-item.// -->
+			</div> <!-- card.// -->
+				</aside> <!-- col.// -->
+			
+				<aside class="col-sm-4">
+					<div class="card" style="margin: 20px;">
+						<article class="card-group-item">
+							<header class="card-header">
+								<h6 class="title">Marka </h6>
+							</header>
+							<div class="filter-content">
+								<div class="card-body">
+								<div class="form-row ">
+								<div class="form-group col-md-12">
+									<select formControName="brand" class="form-control" id="type">
+										<option *ngFor="let element of brandArray">{{element}}</option>
+									</select>
+								</div>
+								</div>
+								</div> <!-- card-body.// -->
+							</div>
+						</article> <!-- card-group-item.// -->
+						<article class="card-group-item">
+							<header class="card-header">
+								<h6 class="title">Miasto </h6>
+							</header>
+							<div class="filter-content">
+								<div class="card-body">
+								<div class="form-row">
+								<div class="form-group col-md-12">
+								<select formControlName="city" class="form-control" name="city">
+										<option *ngFor="let element of cityArray">{{element}}</option>
+									</select>
+								</div>
+								</div>
+								</div> <!-- card-body.// -->
+							</div>
+							
+						</article> <!-- card-group-item.// -->
+						
+					</div> <!-- card.// -->
 					
+					<button  class="btn btn-success w-100 card" style="max-width: 50%; margin: auto; background-color: rgb(106, 177, 144);" (click)="search()">Wyszukaj</button>
+					
+						</aside> <!-- col.// -->
+				<aside class="col-sm-4">
+			<div class="card" style="margin: 20px;">
+				<article class="card-group-item">
+					<header class="card-header">
+						<h6 class="title">Cena </h6>
+					</header>
+					<div class="filter-content">
+						<div class="card-body">
+						<div class="form-row">
+						<div class="form-group col-md-6">
+						  <label>Od</label>
+						  <input formControlName="minPrice" type="number" class="form-control" id="inputEmail4" placeholder="">
+						</div>
+						<div class="form-group col-md-6 text-right">
+						  <label>Do</label>
+						  <input formControlName="maxPrice" type="number" class="form-control" placeholder="">
+						</div>
+						</div>
+						</div> <!-- card-body.// -->
 					</div>
-					</div> <!-- card-body.// -->
+				</article> <!-- card-group-item.// -->
+				<article class="card-group-item">
+					<header class="card-header">
+						<h6 class="title">Rok</h6>
+					</header>
+					<div class="filter-content">
+						<div class="card-body">
+						<div class="form-row">
+						<div class="form-group col-md-6">
+						  <label>Od</label>
+						  <input formControlName="minYear" type="number" class="form-control" id="inputEmail4" placeholder="">
+						</div>
+						<div class="form-group col-md-6 text-right">
+						  <label>Do</label>
+						  <input formControlName="maxYear" type="number" class="form-control" placeholder="">
+						</div>
+						</div>
+						</div> <!-- card-body.// -->
+					</div>
+				</article> <!-- card-group-item.// -->
+			</div> <!-- card.// -->
+				</aside> <!-- col.// -->
+			</div> <!-- row.// -->
+		
+		</form>
+		
+		  <div class="container d-flex justify-content-center"> Hisotria</div>
+		  <div class="container d-flex justify-content-center">
+			<div class="row">
+				<div class="col-md-10" *ngFor="let element of announcementArray" style="margin-bottom: 50px;">
+					<div class="card card-body">
+						<div class="media align-items-center flex-column flex-lg-row">
+							<div class="mr-2 mb-3 mb-lg-0">  <img [src]="element.imagesBytes[0]" width="150" height="150" alt=""> </div>
+							<div class="media-body">
+								<h6 class="media-title font-weight-semibold"> <a [routerLink]="['/announcement', element.announcementId]" data-abc="true">{{element.title}}</a> </h6>
+								<ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
+									<li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">{{element.type}}</a></li>
+									<li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">{{element.city}}</a></li>
+								</ul>
+								<p class="mb-3">{{element.description}}</p>
+								<ul class="list-inline list-inline-dotted mb-0">
+									<a href="#" data-abc="true">Dodaj do ulubionych</a>                        
+								</ul>
+							</div>
+							<div class="mt-3 mt-lg-0 ml-lg-3 text-center">
+								<h3 class="mb-0 font-weight-semibold">{{element.price}} zl</h3>
+							</div>
+						</div>
 				</div>
-			</article> <!-- card-group-item.// -->
-		</div> <!-- card.// -->
-		
-		
-		
-			</aside> <!-- col.// -->
-	<aside class="col-sm-4">
-<div class="card">
-	<article class="card-group-item">
-		<header class="card-header">
-			<h6 class="title">Range input </h6>
-		</header>
-		<div class="filter-content">
-			<div class="card-body">
-			<div class="form-row">
-			<div class="form-group col-md-6">
-			  <label>Min</label>
-			  <input type="number" class="form-control" id="inputEmail4" placeholder="$0">
 			</div>
-			<div class="form-group col-md-6 text-right">
-			  <label>Max</label>
-			  <input type="number" class="form-control" placeholder="$1,0000">
-			</div>
-			</div>
-			</div> <!-- card-body.// -->
 		</div>
-	</article> <!-- card-group-item.// -->
-	<article class="card-group-item">
-		<header class="card-header">
-			<h6 class="title">Stan </h6>
-		</header>
-		<div class="filter-content">
-			<div class="card-body">
-			<label class="form-check">
-			  <input class="form-check-input" type="radio" name="exampleRadio" value="">
-			  <span class="form-check-label">
-			    Brand new items
-			  </span>
-			</label>
-			<label class="form-check">
-			  <input class="form-check-input" type="radio" name="exampleRadio" value="">
-			  <span class="form-check-label">
-			    Some other option
-			  </span>
-			</label>
-			</div> <!-- card-body.// -->
-		</div>
-	</article> <!-- card-group-item.// -->
-</div> <!-- card.// -->
-
-
-
-	</aside> <!-- col.// -->
-</div> <!-- row.// -->
-
-</div> 
-
-  </div>
-  <div class="container d-flex justify-content-center"> Hisotria</div>
-  <div class="container d-flex justify-content-center">
-    <div class="row">
-        <div class="col-md-10" *ngFor="let element of announcementArray" style="margin-bottom: 50px;">
-            <div class="card card-body">
-                <div class="media align-items-center flex-column flex-lg-row">
-                    <div class="mr-2 mb-3 mb-lg-0">  <img [src]="element.imagesBytes[0]" width="150" height="150" alt=""> </div>
-                    <div class="media-body">
-                        <h6 class="media-title font-weight-semibold"> <a [routerLink]="['/announcement', element.announcementId]" data-abc="true">{{element.title}}</a> </h6>
-                        <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
-                            <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">{{element.type}}</a></li>
-                            <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">{{element.city}}</a></li>
-                        </ul>
-                        <p class="mb-3">{{element.description}}</p>
-                        <ul class="list-inline list-inline-dotted mb-0">
-                            <a href="#" data-abc="true">Dodaj do ulubionych</a>                        
-                        </ul>
-                    </div>
-                    <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
-                        <h3 class="mb-0 font-weight-semibold">{{element.price}} zl</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
