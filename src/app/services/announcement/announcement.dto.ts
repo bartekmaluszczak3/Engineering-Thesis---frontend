@@ -11,4 +11,5 @@ export class AnnouncementDto{
     mileage!: number
     firstOwner!: boolean
     damaged!: boolean
+    capacity!: number
 }

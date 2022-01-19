@@ -1,23 +1,43 @@
-.form-control-invalid{
-    color: red;
-}
-.form-control.ng-touched.ng-invalid{
-    border: 1px solid red;
-}
 
-.form-control.ng-touched.ng-valid{
-    border: 1px solid green;
-}
-
-.box{
-    border: 1px solid rgb(106, 177, 144);
-}
-
-body{
-    background-color: rgb(255, 255, 240);
-}
-
-.alert-login{
-    margin-top: 30px;
-}
-
+	.contact{
+		padding: 4%;
+		height: 400px;
+	}
+	.col-md-3{
+		background: rgb(106, 177, 144);
+		padding: 4%;
+		border-top-left-radius: 0.5rem;
+		border-bottom-left-radius: 0.5rem;
+	}
+	.contact-info{
+		margin-top:10%;
+	}
+	.contact-info h2{
+		margin-bottom: 10%;
+	}
+	.col-md-9{
+		padding: 3%;
+		border-top-right-radius: 0.5rem;
+		border-bottom-right-radius: 0.5rem;
+	}
+	.contact-form label{
+		font-weight:600;
+	}
+	.contact-form button{
+		background: rgb(106, 177, 144);;
+		font-weight: 600;
+		width: 25%;
+	}
+	.contact-form button:focus{
+		box-shadow:none;
+	}
+    .form-control-invalid{
+        color: red;
+    }
+    .form-control.ng-touched.ng-invalid{
+        border: 1px solid red;
+    }
+    
+    .form-control.ng-touched.ng-valid{
+        border: 1px solid green;
+    }

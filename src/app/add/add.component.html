@@ -1,86 +1,124 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<div class="container" style="background: gray;">
-    <div style="margin-top: 50px;"  >
-        <div class="col-sm-8 col-md-6" style="margin: 50px;">
-            <form [formGroup]="exForm" method="post">
-                <div class="mb-4">
-                    <label  class="form-label" for="login">Tytuł</label>
-                    <input  formControlName="title" type="text" class="form-control" id="title">
-                    <small *ngIf="exForm.get('title')?.hasError('required') && exForm.get('title')?.touched" class="form-control-invalid">Tytuł jest wymagany</small>
-                </div>
-                <div class="mb-4"> 
-                    <label class="form-label" for="price">Cena</label>
-                    <input style="width: 20%;" formControlName="price" type="number" class="form-control" id="price">
-                    <small *ngIf="exForm.get('price')?.invalid && exForm.get('price')?.touched" class="form-control-invalid">Cena jest wymagana</small>                
-                </div>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
+    <div class="container" style="margin-top: 50px; background: rgb(247, 247, 247);">
+        <div style="padding:50px;">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="contact-info">
+                        <h4>Miejsce na twoją reklame!</h4>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="contact-form">
+                        <form [formGroup]= "exForm" method="post">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="title">Tytuł:</label>
+                                <div class="col-sm-10">          
+                                  <input formControlName="title" type="text" class="form-control" id="title" placeholder="Tytuł pomoże kupującym znaleźć twoje ogłoszenie">
+                                  <small *ngIf="exForm.get('title')?.hasError('required') && exForm.get('title')?.touched" class="form-control-invalid">Tytuł jest wymagany</small>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-2" for="lname">Cena:</label>
+                                <div class="col-sm-10">          
+                                    <input formControlName="price" type="number" class="form-control" id="price">
+                                    <small *ngIf="exForm.get('price')?.invalid && exForm.get('price')?.touched" class="form-control-invalid">Cena jest wymagana</small>         
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-2" for="lname">Typ:</label>
+                                <div class="col-sm-10">          
+                                    <select formControlName="type" class="form-control" id="type">
+                                        <option style="display: none;"></option>
+                                        <option *ngFor="let element of typeArray">{{element}}</option>
 
-                <div class="mb-4" style="width: 30%;">
-                    <label class="form-label" for="type">Typ</label>
-                    <select formControlName="type" class="form-control" id="type">
-                        <option *ngFor="let element of typeArray">{{element}}</option>
-                    </select>
-                    <small *ngIf="exForm.get('type')?.hasError('required') && exForm.get('type')?.touched" class="form-control-invalid">Typ jest wymagany</small>
-                    <span *ngIf="exForm.get('type')?.touched && exForm.get('type')?.value != 'Przyczepa'">{{addValidator()}}</span>
-                    <span *ngIf="exForm.get('type')?.touched && exForm.get('type')?.value == 'Przyczepa'">{{removeValidator()}}</span>
-
+                                    </select>                                
+                                    <small *ngIf="exForm.get('type')?.hasError('required') && exForm.get('type')?.touched" class="form-control-invalid" aria-placeholder="">Typ jest wymagany</small>
+                                    <span *ngIf="exForm.get('type')?.touched && exForm.get('type')?.value != 'Przyczepa'">{{addValidator()}}</span>
+                                    <span *ngIf="exForm.get('type')?.touched && exForm.get('type')?.value == 'Przyczepa'">{{removeValidator()}}</span>
+                                </div>
+                              </div><div class="form-group">
+                                <label class="control-label col-sm-2" for="city">Miasto:</label>
+                                <div class="col-sm-10">          
+                                    <select formControlName="city" class="form-control" id="city" name="city">
+                                        <option style="display: none;"></option>
+                                        <option *ngFor="let element of cityArray">{{element}}</option>
+                                        <small *ngIf="exForm.get('city')?.hasError('required') && exForm.get('city')?.touched" class="form-control-invalid">Miasto jest wymagane</small>
+                                    </select>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-2" for="comment">Marka:</label>
+                                <div class="col-sm-10">
+                                    <select formControlName="brand" class="form-control" id="city" name="city">
+                                        <option style="display: none;"></option>
+                                        <option *ngFor="let element of brandArray">{{element}}</option>
+                                    </select>
+                                    <small *ngIf="exForm.get('brand')?.hasError('brand') && exForm.get('brand')?.touched" class="form-control-invalid">Marka jest wymagana</small>                                
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-2" for="comment">Rok:</label>
+                                <div class="col-sm-10">
+                                    <input formControlName="year" type="number" class="form-control" id="year">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-2" for="comment">Model:</label>
+                                <div class="col-sm-10">
+                                    <input  formControlName="model" class="form-control" id="model">
+                                    <small *ngIf="exForm.get('model')?.invalid && exForm.get('model')?.touched" class="form-control-invalid">Model jest wymagany</small>                                    </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-2" for="comment">Pierwszy wlaściciel:</label>
+                                <div class="col-sm-10">
+                                    <input style="width: 10%; height: 20px;" formControlName="firstOwner" type="checkbox" id="firstOwner">                                
+                                </div>
+                              </div> 
+                              <div class="form-group">
+                                <label class="control-label col-sm-2" for="comment">Uszkodzony:</label>
+                                <div class="col-sm-10">
+                                    <input style="width: 10%; height: 20px;" formControlName="damaged" type="checkbox" id="damaged">
+                                </div>
+                              </div> 
+                              <div class="form-group"  *ngIf="exForm.get('type')?.touched && exForm.get('type')?.value != 'Przyczepa'">
+                                <label class="control-label col-sm-2" for="comment">Pojemnosc:</label>
+                                <div class="col-sm-10">
+                                    <input formControlName="capacity" type="number" class="form-control" id="year">
+                                </div>
+                              </div>
+                              <div class="form-group" *ngIf="exForm.get('type')?.touched && exForm.get('type')?.value != 'Przyczepa'">
+                                <label class="control-label col-sm-2" for="comment">Moc:</label>
+                                <div class="col-sm-10">
+                                    <input formControlName="power" type="number" class="form-control" id="power">
+                                </div>
+                              </div>
+                              <div class="form-group"  *ngIf="exForm.get('type')?.touched && exForm.get('type')?.value != 'Przyczepa'">
+                                <label class="control-label col-sm-2" for="comment">Przebieg:</label>
+                                <div class="col-sm-10">
+                                    <input formControlName="mileage" type="number" class="form-control" id="mileage">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-2" for="email">Opis:</label>
+                                <div class="col-sm-10">
+                                    <textarea (keyup)="autoGrowTextZone($event)" formControlName="description" id="description" name="description" rows="4" cols="50" class="form-control" placeholder="Im wiecej szczegółów tym lepiej" ></textarea>
+                                    <small *ngIf="exForm.get('type')?.hasError('description') && exForm.get('description')?.touched" class="form-control-invalid">Opis jest wymagany</small>                                
+                                </div>
+                              </div>
+                              <div class="form-group">        
+                                <div class="col-sm-offset-2 col-sm-10">
+                                  <button (click)="addAnnouncement()" type="submit" class="btn btn-default">Dalej</button>
+                                </div>
+                              </div>
+                        </form>-
+                    </div>
                 </div>
-
-                <div class="mb-4"  style="width: 30%;">
-                    <label class="form-label" for="brand">Marka</label>
-                    <select formControlName="brand" class="form-control" id="brand" name="brand">
-                        <option *ngFor="let element of brandArray">{{element}}</option>
-                    </select>
-                </div>
-
-                <div class="mb-4"  style="width: 30%;">
-                    <label class="form-label" for="city">Miasto</label>
-                    <select formControlName="city" class="form-control" id="city" name="city">
-                        <option *ngFor="let element of cityArray">{{element}}</option>
-                    </select>
-                </div>
-                <div class="mb-4">
-                    <label class="form-label" for="description">Opis</label>
-                    <textarea (keyup)="autoGrowTextZone($event)" formControlName="description" id="description" name="description" rows="4" cols="50" class="form-control" ></textarea>
-                    <small *ngIf="exForm.get('type')?.hasError('description') && exForm.get('description')?.touched" class="form-control-invalid">Opis jest wymagany</small>
-
-                </div>
-                <div class="mb-4"> 
-                    <label class="form-label" for="year">Rok</label>
-                    <input style="width: 20%;" formControlName="year" type="number" class="form-control" id="year">
-                    <small *ngIf="exForm.get('year')?.invalid && exForm.get('year')?.touched" class="form-control-invalid">Rok jest wymagany</small>                
-                </div>
-                <div class="mb-4"> 
-                    <label class="form-label" for="mdoel">Model</label>
-                    <input style="width: 30%;" formControlName="model" class="form-control" id="model">
-                    <small *ngIf="exForm.get('model')?.invalid && exForm.get('model')?.touched" class="form-control-invalid">Model jest wymagany</small>                
-                </div>
-
-                <div class="mb-4"> 
-                    <label class="form-label" for="firstOwner">Pierwszy właścicel</label>
-                    <input style="width: 10%; height: 20px;" formControlName="firstOwner" type="checkbox" id="firstOwner">
-                </div>
-
-                <div class="mb-4"> 
-                    <label class="form-label" for="firstOwner">Uszkodzony</label>
-                    <input style="width: 10%; height: 20px;" formControlName="damaged" type="checkbox" id="damaged">
-                </div>
-
-                <div class="mb-4" *ngIf="exForm.get('type')?.touched && exForm.get('type')?.value != 'Przyczepa'"> 
-                    <label class="form-label" for="power">Moc(KM)</label>
-                    <input style="width: 10%;" formControlName="power" type="number" class="form-control" id="power">
-                </div>
-
-                <div class="mb-4" *ngIf="exForm.get('type')?.touched && exForm.get('type')?.value != 'Przyczepa'">
-                    <label class="form-label" for="mileage">Przebieg</label>
-                    <input style="width: 30%;" formControlName="mileage" type="number" class="form-control" id="mileage">
-                </div>
-
-                <div style="margin-top: 50px; width: 30%;">
-                    <button  [disabled]="exForm.invalid" type="submit" class="btn btn-success w-100" (click)="addAnnouncement()">Dalej</button>
-                </div>
-            </form>
+            </div>
         </div>
+        
     </div>
-</div>
-
+    

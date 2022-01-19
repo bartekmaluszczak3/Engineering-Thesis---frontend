@@ -33,7 +33,8 @@ export class AddComponent implements OnInit {
       power: new FormControl(null),
       mileage: new FormControl(null),
       firstOwner: new FormControl(null),
-      damaged: new FormControl(null)
+      damaged: new FormControl(null),
+      capacity: new FormControl(null)
 
     })
     this.cityService.get().subscribe(
@@ -86,6 +87,8 @@ export class AddComponent implements OnInit {
     announcementDto.mileage = this.exForm.get('mileage')?.value
     announcementDto.firstOwner = this.exForm.get('firstOwner')?.value
     announcementDto.damaged = this.exForm.get('damaged')?.value
+    announcementDto.capacity = this.exForm.get('capacity')?.value
+    console.log(announcementDto)
     this.announcementService.create(announcementDto).subscribe(
       res =>{
           console.log(res)
