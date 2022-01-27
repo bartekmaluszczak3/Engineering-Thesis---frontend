@@ -2,7 +2,7 @@
 	<div class="container">
   
 		<form [formGroup]="exForm">
-			<div class="row" style="background-color: rgb(247, 247, 247);">
+			<div class="row" style="background-color: rgb(242, 244, 245);">
 				<aside class="col-sm-4">
 			<div class="card" style="margin: 20px;">
 				<article class="card-group-item">
@@ -150,12 +150,12 @@
 			</div> <!-- row.// -->
 		
 		</form>
-		
-		  <div class="container d-flex justify-content-center"> Hisotria</div>
+		<div *ngIf ="this.isLogged"class="container d-flex justify-content-center history" > Hisotria</div>
 		  <div class="container d-flex justify-content-center">
+
 			<div class="row">
 				<div class="col-md-10" *ngFor="let element of announcementArray" style="margin-bottom: 50px;">
-					<div class="card card-body">
+					<div class="card card-body" style="background-color: rgb(242, 244, 245);">
 						<div class="media align-items-center flex-column flex-lg-row">
 							<div class="mr-2 mb-3 mb-lg-0">  <img [src]="element.imagesBytes[0]" width="150" height="150" alt=""> </div>
 							<div class="media-body">

@@ -10,17 +10,30 @@ export class ImageService {
 
   constructor(private http: HttpClient) { }
 
-  upload(selectedFile: any, id:any ){
+  upload(selectedFile: any[], id:any ){
     let headers = getHeaders()
-    const uploadImageData = new FormData();
-    uploadImageData.append('imageFile', selectedFile, selectedFile.name)
     let url = this.baseUrl + "/upload?id=" + id
-    return this.http.post<any>(url, uploadImageData, {headers})
+    selectedFile.forEach(element =>{
+      const uploadImageData = new FormData();
+      uploadImageData.append('imageFile', element, element.name)
+      this.http.post<any>(url,uploadImageData, {headers}).subscribe()
+      console.log("elo")
+    })
+  
+    return ""
   }
 
   get(id:any){
     let headers = getHeaders()
     let url = this.baseUrl + "/get?id=" + id 
     return this.http.get<any>(url, {headers})
+  }
+
+  delete(id:any){
+    let headers = getHeaders()
+    console.log(id)
+    let url = this.baseUrl + "/delete?id=" + id 
+    return this.http.delete<any>(url, {headers})
+
   }
 }

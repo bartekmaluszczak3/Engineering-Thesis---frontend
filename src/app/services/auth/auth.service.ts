@@ -32,6 +32,12 @@ export class AuthService {
     return this.http.post<any>(url, {headers})
   }
 
+  getPhone(login:any){
+    let headers = getHeaders()
+    let url = this.baseUrl + "/get_phone?userLogin=" + login
+    return this.http.get<any>(url, {headers})
+  }
+
   getCity(){
     let headers = getHeaders()
     return this.http.get<any>(this.baseUrl + "/get_city", {headers})

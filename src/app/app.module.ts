@@ -19,6 +19,7 @@ import { AddImageComponent } from './add-image/add-image.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { SearchComponent } from './search/search.component';
 import { LoggedUser } from './guard/LoggedUser';
+import { EditImagesComponent } from './edit-images/edit-images.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +35,7 @@ import { LoggedUser } from './guard/LoggedUser';
     AddImageComponent,
     EditProfileComponent,
     SearchComponent,
+    EditImagesComponent,
   ],
   imports: [
     FormsModule,

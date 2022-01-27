@@ -26,5 +26,7 @@ export class MyAnnouncementComponent implements OnInit {
       }
     )
   }
-
+  delete(id:any){
+    
+  }
 }

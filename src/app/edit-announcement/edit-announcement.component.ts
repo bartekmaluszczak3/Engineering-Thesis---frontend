@@ -36,13 +36,13 @@ export class EditAnnouncementComponent implements OnInit {
       power: new FormControl(null),
       mileage: new FormControl(null),
       firstOwner: new FormControl(null),
-      damaged: new FormControl(null)
+      damaged: new FormControl(null),
+      capacity: new FormControl(null)
 
     })
     this.announcementService.getById(this.id).subscribe(
       res=>{
         announcement = res
-        this.exForm.get('type')?.setValue(announcement.type)
         this.exForm.get('city')?.setValue(announcement.city)
         this.exForm.get('description')?.setValue(announcement.description)
         this.exForm.get('price')?.setValue(announcement.price)
@@ -54,6 +54,8 @@ export class EditAnnouncementComponent implements OnInit {
         this.exForm.get('mileage')?.setValue(announcement.mileage)
         this.exForm.get('firstOwner')?.setValue(announcement.firstOwner)
         this.exForm.get('damaged')?.setValue(announcement.damaged)
+        this.exForm.get('capacity')?.setValue(announcement.capacity)
+        
       }
     )
     this.cityService.get().subscribe(
@@ -98,6 +100,8 @@ export class EditAnnouncementComponent implements OnInit {
     this.announcementService.edit(this.id, announcementDto).subscribe(
       res =>{
        console.log(res)
+       let url = "/edit_images/" + res.announcementId
+          this.router.navigate([url])
       },
       err =>{
         console.log(err)

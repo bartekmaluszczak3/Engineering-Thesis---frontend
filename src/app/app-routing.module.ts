@@ -13,13 +13,9 @@ import { LoginComponent } from './login/login.component';
 import { MyAnnouncementComponent } from './my_announcement/my-announcement.component';
 import { RegisterComponent } from './register/register.component';
 import { SearchComponent } from './search/search.component';
+import { EditImagesComponent } from './edit-images/edit-images.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: '/home',
-    pathMatch: 'full'
-  },
   {
     path: 'home', 
     component: HomeComponent
@@ -70,7 +66,12 @@ const routes: Routes = [
   {
     path: 'search',
     component: SearchComponent
-  }
+  },
+  {
+    path: 'edit_images/:id',
+    component: EditImagesComponent,
+    canActivate: [LoggedUser]
+  },
 ];
 
 @NgModule({

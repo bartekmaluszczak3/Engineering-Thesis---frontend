@@ -17,7 +17,7 @@
   </div>
   <div class="container row" style="margin: 50px;">
     <ul class="row" *ngFor="let element of imageArray">
-              <img (click)="delete(element)"[src]="element" style="height: 100px; width: 100px;" class="img-thumbnail">
+              <img (click)="delete(element)"[src]="element.bytes" style="height: 100px; width: 100px;" class="img-thumbnail">
             
     </ul>
     

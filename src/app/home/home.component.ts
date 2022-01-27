@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth/auth.service';
 import { BrandService } from '../services/brand/brand.service';
 import { CityService } from '../services/city/city.service';
 import { HistoryService } from '../services/history/history.service';
@@ -14,11 +15,12 @@ import { mapImageList } from '../shared/utils';
 
 export class HomeComponent implements OnInit {
   exForm!: FormGroup;
+  isLogged: boolean = false;
   announcementArray: any[] = []
   brandArray: any[] = []
   cityArray: any[] = []
   constructor(private historyService: HistoryService, private brandService: BrandService, private cityService: CityService,
-              private router: Router) {}
+              private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.exForm = new FormGroup({
@@ -55,6 +57,7 @@ export class HomeComponent implements OnInit {
         this.cityArray = res
       }
     )
+    this.isLogged = this.authService.loggenIn()
   }
 
   search(){

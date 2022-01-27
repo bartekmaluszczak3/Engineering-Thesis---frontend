@@ -47,3 +47,10 @@ y{margin-top:20px;}
 .font-weight-semibold {
     font-weight: 600 !important;
 }
+
+.history{
+    margin: 50px;
+    font-size: 20px;
+    color: rgb(106, 177, 144);
+
+}

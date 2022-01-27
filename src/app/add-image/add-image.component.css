@@ -1,0 +1,9 @@
+.upload{
+  background-color: rgb(242, 244, 245);
+  border-color:rgb(106, 177, 144) ;
+}
+.server{
+  float: right;
+  background-color:rgb(106, 177, 144);
+  border-color: rgb(106, 177, 144);
+}
