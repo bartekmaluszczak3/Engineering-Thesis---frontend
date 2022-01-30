@@ -1,33 +1,28 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<!--Navbar-->
 <nav class="navbar navbar-light light-blue lighten-4" style="background-color: rgb(106, 177, 144);">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <!-- Navbar brand -->
-  <a class="navbar-brand" style="color:rgb(255, 255, 240); font-size: 20px;" href="/home">Home</a>
+  <a class="navbar-brand" style="color:rgb(255, 255, 240); font-size: 15px;" href="/home"><img src="https://i.ibb.co/0KwQQfF/output-onlinepngtools.png" style="height: 50px;"></a>
  
-
-  <div class="container">
-    <div class="input-group" style="padding: 15px;">
-      <input type="text" class="form-control" placeholder="search" style="font-size: 20px;">
-      <button  class="btn btn-outline-light" type="submit" style="font-size: 20px; margin-left: 20px;">
-        Search
-      </button>
+  <form [formGroup]="exForm" class="container" method="post">
+    <div class="container">
+      <div class="input-group" style="padding: 15px;">
+        <input type="text" class="form-control" placeholder="Wyszukaj" style="font-size: 20px;" formControlName="search">
+        <button  class="btn btn-outline-light" type="submit" style="font-size: 20px; margin-left: 20px;" (click)="search()">
+          Szukaj
+        </button>
+        </div>
       </div>
+  </form>
+  
       
-  </div>
-  <!-- Collapse button -->
   <button *ngIf="this.authService.loggenIn(); else elseBlock"class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
     aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i
         class="fa fa-bars" style="color:rgb(255, 255, 240);"></i></span></button>
   <ng-template #elseBlock>
     <a href="/login" style="color: rgb(255, 255, 240); font-size: 20px;">Login</a>
   </ng-template>
-  <!-- Collapsible content -->
   <div class="collapse navbar-collapse" id="navbarSupportedContent1">
-
-    <!-- Links -->
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="/add">Dodaj ogloszenie <span class="sr-only">(current)</span></a>
@@ -41,13 +36,13 @@
       <li class="nav-item">
         <a class="nav-link" href="/favourite">Ulubione</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/home" (click)="logout()">Wyloguj</a>
+      </li>
     </ul>
-    <!-- Links -->
 
   </div>
-  <!-- Collapsible content -->
 
 </nav>
-<!--/.Navbar-->
 
 <router-outlet></router-outlet>

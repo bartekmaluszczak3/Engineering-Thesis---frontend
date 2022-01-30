@@ -20,6 +20,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { SearchComponent } from './search/search.component';
 import { LoggedUser } from './guard/LoggedUser';
 import { EditImagesComponent } from './edit-images/edit-images.component';
+import { ErrorComponent } from './error/error.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,13 +37,14 @@ import { EditImagesComponent } from './edit-images/edit-images.component';
     EditProfileComponent,
     SearchComponent,
     EditImagesComponent,
+    ErrorComponent,
   ],
   imports: [
     FormsModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, 
   ],
   providers: [AuthService, {
     provide: HTTP_INTERCEPTORS,

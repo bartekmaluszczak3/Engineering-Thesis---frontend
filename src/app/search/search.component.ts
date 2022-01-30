@@ -10,6 +10,7 @@ import { mapImageList } from '../shared/utils';
 })
 export class SearchComponent implements OnInit {
   announcementArray: any[] = []
+  nullable = false
   constructor(private route: Router, private announcementService: AnnouncementService) { }
 
   ngOnInit(): void {
@@ -20,6 +21,9 @@ export class SearchComponent implements OnInit {
         this.announcementArray.forEach(element =>{
           element.imagesBytes = mapImageList(element.imagesBytes)
         })
+        if(this.announcementArray.length == 0){
+          this.nullable = true
+        }
       }
     )
   }

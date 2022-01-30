@@ -1,43 +1,77 @@
 
-	.contact{
-		padding: 4%;
-		height: 400px;
-	}
-	.col-md-3{
-		background: rgb(106, 177, 144);
-		padding: 4%;
-		border-top-left-radius: 0.5rem;
-		border-bottom-left-radius: 0.5rem;
-	}
-	.contact-info{
-		margin-top:10%;
-	}
-	.contact-info h2{
-		margin-bottom: 10%;
-	}
-	.col-md-9{
-		padding: 3%;
-		border-top-right-radius: 0.5rem;
-		border-bottom-right-radius: 0.5rem;
-	}
-	.contact-form label{
-		font-weight:600;
-	}
-	.contact-form button{
-		background: rgb(106, 177, 144);;
-		font-weight: 600;
-		width: 25%;
-	}
-	.contact-form button:focus{
-		box-shadow:none;
-	}
-    .form-control-invalid{
-        color: red;
-    }
-    .form-control.ng-touched.ng-invalid{
-        border: 1px solid red;
-    }
-    
-    .form-control.ng-touched.ng-valid{
-        border: 1px solid green;
-    }
+.center{
+    margin-top: 50px; background: rgb(247, 247, 247);
+}
+.button{
+    min-height: 30px;
+    background-color: rgb(106, 177, 144);
+}
+.label{
+    color:#aaa;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+#Highlighted-form.no-placeholder .form-group label{
+    display:block;
+}
+
+#Highlighted-form .controls {
+    padding:0;
+    margin-top:40px;
+}
+
+#Highlighted-form.no-placeholder .controls {
+    margin-top:0;
+}
+
+#Highlighted-form .form-control {
+	display:inline;
+    background:#fff;
+    border:none;
+    border-radius:5px;
+    outline:none;
+    box-shadow:0 2px 0 rgb(141, 111, 161);;
+    height:52px;
+    font-size:18px;
+    line-height:32px;
+    color:#aaa;
+    font-weight:400;
+    padding-left:64px;
+	vertical-align:top;
+}
+
+#Highlighted-form .form-group.half-width{
+    width:40%;
+    float:left;
+}
+
+#Highlighted-form .form-group{
+    position:relative;
+}
+
+#Highlighted-form.no-placeholder .form-group [class*=fa]{
+    top:30px;
+}
+
+#Highlighted-form textarea.form-control {
+    height:auto;
+	min-width:100%;
+    max-width:100%;
+    font-size:18px;
+    font-weight:400;
+    line-height:24px;
+	padding-top:14px;
+	vertical-align:top;
+}
+
+.form-control-invalid{
+    color: red;
+    font-size: 16px;
+}
+.form-control.ng-touched.ng-invalid{
+    border: 1px solid red;
+}
+
+.form-control.ng-touched.ng-valid{
+    border: 1px solid green;
+}

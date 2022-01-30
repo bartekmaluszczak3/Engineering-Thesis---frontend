@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FavouriteService } from '../services/favourite/favourite.service';
+import { mapImageList } from '../shared/utils';
 
 @Component({
   selector: 'app-favourite',
@@ -15,9 +16,9 @@ export class FavouriteComponent implements OnInit {
     this.favouriteService.get().subscribe(
       res=>{
           this.announcementArray = res
-          console.log(this.announcementArray)
+          console.log(res)
           this.announcementArray.forEach(element =>{
-            element.imageBytes = "data:image/JPEG;base64," + element.imageBytes;
+            element.imagesBytes = mapImageList(element.imagesBytes)
           })
       },
       err=>{

@@ -14,11 +14,21 @@ import { MyAnnouncementComponent } from './my_announcement/my-announcement.compo
 import { RegisterComponent } from './register/register.component';
 import { SearchComponent } from './search/search.component';
 import { EditImagesComponent } from './edit-images/edit-images.component';
+import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
   {
     path: 'home', 
     component: HomeComponent
+  },
+  {
+    path: 'error',
+    component: ErrorComponent
+  },
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
   },
   {
     path: 'login',
@@ -55,7 +65,8 @@ const routes: Routes = [
   },
   {
     path: 'add_image/:id',
-    component: AddImageComponent
+    component: AddImageComponent,
+    canActivate: [LoggedUser]
   },
   {
     path: 'edit_profile',

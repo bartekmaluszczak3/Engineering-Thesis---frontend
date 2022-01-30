@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AnnouncementService } from '../services/announcement/announcement.service';
 import { ImageService } from '../services/image/image.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { ImageService } from '../services/image/image.service';
 })
 export class EditImagesComponent implements OnInit {
 
-  constructor(private imageService: ImageService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private imageService: ImageService, private route: ActivatedRoute, private router: Router, private announcementService: AnnouncementService) { }
   id = this.route.snapshot.paramMap.get('id')
   selectedFile!: File
   retrievedImage: any;
@@ -22,13 +23,20 @@ export class EditImagesComponent implements OnInit {
   reader = new FileReader()
 
   ngOnInit(): void {
-        this.id = this.route.snapshot.paramMap.get('id')
-        this.imageService.get(this.id).subscribe(res=>{
-          this.imageArray = res
-          this.imageArray.forEach(e=>{
-            e.bytes = "data:image/JPEG;base64," + e.bytes
-          })
-        })
+    let result
+    this.id = this.route.snapshot.paramMap.get('id')
+    this.announcementService.checkOwner(this.id).subscribe(res=>{
+      result = res
+      if(! result){
+        this.router.navigate(["/error"])
+      }
+  })
+    this.imageService.get(this.id).subscribe(res=>{
+      this.imageArray = res
+      this.imageArray.forEach(e=>{
+        e.bytes = "data:image/JPEG;base64," + e.bytes
+      })
+    })
        
   }
 

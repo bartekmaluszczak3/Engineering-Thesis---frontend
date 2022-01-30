@@ -101,15 +101,25 @@
 			  
 		<dl class="param param-feature">
 			<dt>Moc</dt>
-			<dd>{{announcement.power}}</dd>
+			<dd>{{announcement.power}} KM</dd>
 		  </dl>
 		  
 		<dl class="param param-feature">
 			<dt>Przebieg</dt>
-			<dd>{{announcement.mileage}}</dd>
+			<dd>{{announcement.mileage}} km</dd>
 		</dl>
-		
+		<dl class="param param-feature">
+			<dt>Pojemnosc</dt>
+			<dd>{{announcement.capacity}} cm³</dd>
+		</dl>
 		  </div>
+		  <dl *ngIf="announcement.firstOwner" class="param param-feature">
+			<dt>Pierwszy wlaściciel</dt>
+			<dd>Tak</dd>
+		</dl>
+		<dl *ngIf="announcement.damaged" class="param param-feature">
+			<dt>Uszkodzony</dt>
+		</dl>
 		  <div class="param param-feature"></div>
 		  
 			<button *ngIf="this.phone" (click)="getPhone()" id="button" href="#" class="btn btn-lg btn-primary text-uppercase">Pokaz numer </button>

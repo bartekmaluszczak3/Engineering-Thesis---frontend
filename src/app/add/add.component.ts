@@ -104,13 +104,16 @@ export class AddComponent implements OnInit {
   addValidator(){
     this.exForm.get('power')?.setValidators([Validators.required])
     this.exForm.get('mileage')?.setValidators([Validators.required])
+    this.exForm.get('capacity')?.setValidators([Validators.required])
 
 
   }
 
   removeValidator(){
     this.exForm.get('power')?.clearValidators
-    this.exForm.get('mileage')?.setValidators([Validators.required])
+    this.exForm.get('mileage')?.clearValidators
+    this.exForm.get('capacity')?.clearValidators
+
 
   }
 }

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
 import { BrandService } from '../services/brand/brand.service';
 import { CityService } from '../services/city/city.service';
+import { FavouriteService } from '../services/favourite/favourite.service';
 import { HistoryService } from '../services/history/history.service';
 import { mapImageList } from '../shared/utils';
 
@@ -20,7 +21,7 @@ export class HomeComponent implements OnInit {
   brandArray: any[] = []
   cityArray: any[] = []
   constructor(private historyService: HistoryService, private brandService: BrandService, private cityService: CityService,
-              private router: Router, private authService: AuthService) {}
+              private router: Router, private authService: AuthService, private favouriteService: FavouriteService) {}
 
   ngOnInit(): void {
     this.exForm = new FormGroup({
@@ -71,8 +72,7 @@ export class HomeComponent implements OnInit {
     let minYear = this.exForm.get('minYear')?.value
     let maxYear = this.exForm.get('maxYear')?.value
     let map = new Map<String, String>();
-    var dict = {};
-    console.log(dict);
+    console.log(brand)
     if(!!type){
       map.set('type', type)
     }
@@ -100,6 +100,7 @@ export class HomeComponent implements OnInit {
     if(!!maxYear){
       map.set('maxYear', maxYear)
     }
+    console.log(map)
     this.router.navigateByUrl(this.getUrl("/search", map))
   }
   getUrl(mapping: string, params:Map<String, String>){
@@ -108,5 +109,9 @@ export class HomeComponent implements OnInit {
       url+=key + "=" + value + "&"
     })
     return url.substring(0, url.length - 1)    
+  }
+
+  addToFavourite(id: any){
+    this.favouriteService.toggle(id).subscribe()
   }
 }

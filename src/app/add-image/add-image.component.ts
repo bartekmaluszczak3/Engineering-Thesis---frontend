@@ -38,6 +38,12 @@ export class AddImageComponent implements OnInit {
       this.imageArray.push(this.reader.result)
     }
   }
+  convert(file: any){
+      this.reader.readAsDataURL(file)
+      this.reader.onload = (e) =>{
+        return this.reader.result
+      }
+  }
   public send(){
     this.imageService.upload(this.arrayToSend, this.id)    
     let url = "/announcement/" + this.id
@@ -47,5 +53,6 @@ export class AddImageComponent implements OnInit {
   public delete(element: any){
     console.log(element)
     this.imageArray = this.imageArray.filter((el:any) => el!== element)
+    this.arrayToSend = this.arrayToSend.filter((el:any) => el! == element)
   }
 }

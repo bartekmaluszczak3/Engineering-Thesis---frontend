@@ -27,6 +27,9 @@ export class MyAnnouncementComponent implements OnInit {
     )
   }
   delete(id:any){
-    
+    console.log(id)
+    this.announcementService.delete(id).subscribe(res=>{
+      console.log(res)
+    })
   }
 }

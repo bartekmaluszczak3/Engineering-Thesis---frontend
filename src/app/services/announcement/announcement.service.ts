@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { getHeaders } from '../../shared/utils';
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,11 @@ export class AnnouncementService {
     
   }
 
+  delete(id:any){
+    let headers = getHeaders()
+    let url = this.baseUrl + "/delete?id=" + id
+    return this.http.delete<any>(url, {headers})
+  }
   create(body: any){
     let headers = getHeaders()
     return this.http.post<any>(this.baseUrl + "/create", body, {headers})
@@ -34,6 +39,7 @@ export class AnnouncementService {
     let headers = getHeaders()
     var re = /search/gi
     let newUrl = this.baseUrl + url.replace(re, 'get')
+    console.log(newUrl)
     return this.http.get<any>(newUrl, {headers})
   }
 
@@ -48,7 +54,7 @@ export class AnnouncementService {
     return this.http.get<any>(url, {headers})
   }
 
-  checkOwner(id: any){
+  checkOwner(id: any): Observable<boolean>{
     let headers = getHeaders()
     let url = this.baseUrl + "/check_ownership?id="+id
     return this.http.get<any>(url, {headers})

@@ -23,6 +23,14 @@ export class EditAnnouncementComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id')
+    let result
+    this.announcementService.checkOwner(this.id).subscribe(res=>{
+        result = res
+        if(! result){
+          this.router.navigate(["/error"])
+        }
+    })
+ 
     let announcement;
     this.exForm = new FormGroup({
       type: new FormControl(null, [Validators.required]),
@@ -49,13 +57,13 @@ export class EditAnnouncementComponent implements OnInit {
         this.exForm.get('brand')?.setValue(announcement.brand)
         this.exForm.get('title')?.setValue(announcement.title)
         this.exForm.get('year')?.setValue(announcement.year)
-        this.exForm.get('model')?.setValue(announcement.model)
+        this.exForm.get('model')?.setValue(announcement.model, {onlySelf: true})
         this.exForm.get('power')?.setValue(announcement.power)
         this.exForm.get('mileage')?.setValue(announcement.mileage)
         this.exForm.get('firstOwner')?.setValue(announcement.firstOwner)
         this.exForm.get('damaged')?.setValue(announcement.damaged)
         this.exForm.get('capacity')?.setValue(announcement.capacity)
-        
+
       }
     )
     this.cityService.get().subscribe(
