@@ -12,7 +12,7 @@ import { LoginDto } from './login.dto';
 export class LoginComponent implements OnInit {
   exForm!: FormGroup;
   constructor(private authService: AuthService, private router: Router) { }
-  status_code = 200
+    error_message = ''
 
   ngOnInit(): void {
     this.exForm = new FormGroup({
@@ -29,12 +29,21 @@ export class LoginComponent implements OnInit {
     this.authService.loginUser(loginDto).subscribe(
       res => {
         localStorage.setItem('token', res.token)
+        
         this.router.navigate(['/home'])
 
       },
       err => {
         console.log(err)
-      this.status_code =  err.status
+        if(err.error.message == undefined){
+          this.error_message = "Nie masz polaczenia z serwerem"
+        }
+        else if(err.error.message == 'User is disabled'){
+          this.error_message = "Uzytkownik jest zbanowany"
+        }
+        else if(err.error.message == "Bad credentials"){
+          this.error_message = "Niepoprawne dane logowania"
+        }
       }
     )
       

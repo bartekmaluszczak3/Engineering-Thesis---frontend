@@ -16,8 +16,8 @@
     </div>
   </div>
   <div class="container row" style="margin: 50px;">
-    <ul class="row" *ngFor="let element of imageArray">
-              <img (click)="delete(element)"[src]="element" style="height: 200px; width: 200px;" class="img-thumbnail">   
+    <ul class="row" *ngFor="let element of this.map | keyvalue">
+              <img (click)="delete(element.key)"[src]="element.value" style="height: 200px; width: 200px;" class="img-thumbnail">   
     </ul>
   </div>
   <div class="container">

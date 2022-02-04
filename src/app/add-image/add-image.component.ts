@@ -19,6 +19,7 @@ export class AddImageComponent implements OnInit {
   imageName: any;
   imageArray: any[] = [];
   arrayToSend: any[] = [];
+  map = new Map<String, any>();
   reader = new FileReader()
 
   ngOnInit(): void {
@@ -35,15 +36,14 @@ export class AddImageComponent implements OnInit {
     this.arrayToSend.push(this.selectedFile)
     this.reader.readAsDataURL(this.selectedFile)
     this.reader.onload = (e) =>{
-      this.imageArray.push(this.reader.result)
+      this.map.set(this.selectedFile.name, this.reader.result)
     }
-  }
-  convert(file: any){
-      this.reader.readAsDataURL(file)
-      this.reader.onload = (e) =>{
-        return this.reader.result
-      }
-  }
+    console.log(this.arrayToSend)
+    this.map.forEach((value: any, key: any) => {
+      console.log(key);
+  });  
+}
+
   public send(){
     this.imageService.upload(this.arrayToSend, this.id)    
     let url = "/announcement/" + this.id
@@ -51,8 +51,11 @@ export class AddImageComponent implements OnInit {
   }
 
   public delete(element: any){
-    console.log(element)
-    this.imageArray = this.imageArray.filter((el:any) => el!== element)
-    this.arrayToSend = this.arrayToSend.filter((el:any) => el! == element)
+    this.map.delete(element)
+    this.arrayToSend = this.arrayToSend.filter((el:any) => el.name! == element)
+    console.log(this.arrayToSend)
+    this.map.forEach((value: any, key: any) => {
+      console.log(key);
+  });
   }
 }
