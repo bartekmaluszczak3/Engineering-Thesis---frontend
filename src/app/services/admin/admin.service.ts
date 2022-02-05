@@ -15,4 +15,16 @@ export class AdminService {
     let url = this.baseUrl + "/get_users_info"
     return this.http.get<any>(url, {headers})
   }
+
+  banUser(login:any){
+    let headers = getHeaders()
+    let url = this.baseUrl + "/ban_user?login=" + login
+    return this.http.put<any>(url, {headers})
+  }
+
+  get_info(){
+    let headers = getHeaders()
+    let url = this.baseUrl + "/get_info"
+    return this.http.get<any>(url, {headers})
+  }
 }

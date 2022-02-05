@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AdminService } from '../services/admin/admin.service';
 import { AuthService } from '../services/auth/auth.service';
 
 @Component({
@@ -8,8 +9,11 @@ import { AuthService } from '../services/auth/auth.service';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-
-  constructor(private authService: AuthService, private router: Router) { }
+  statistic: any = this.adminService.get_info().subscribe(res=>{
+    console.log(res)
+    this.statistic = res
+  })
+  constructor(private authService: AuthService, private router: Router, private adminService: AdminService) { }
 
   ngOnInit(): void {
     this.authService.getRole().subscribe(res=>{
