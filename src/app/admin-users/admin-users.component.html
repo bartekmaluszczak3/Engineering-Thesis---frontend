@@ -1,0 +1,93 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+<div class="container center">
+    <div class="row" style="margin-left: 10px; margin-top: 10px;">
+        <div class="col-xl-3 col-md-6">
+            <div class="card" style="background-color:  #f9fbff; margin-top: 20px; padding-left: 20px;">
+                <div class="card-body">
+                    <div>
+                    </div>
+                    <h5 class="font-size-20 mt-0 pt-1">{{userInfo.allUser}}</h5>
+                    <p class="text-muted mb-0">Wszyscy uzytkownicy</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card" style=" margin-top: 20px; background-color: rgb(106, 177, 144);">
+                <div class="card-body">
+                    <div class="">
+                    </div>
+                    <h5 class="font-size-20 mt-0 pt-1">{{userInfo.activeUser}}</h5>
+                    <p class="text-muted mb-0">Aktywni użytkownicy </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-danger" style=" margin-top: 20px;">
+                <div class="card-body">
+                    <h5 class="font-size-20 mt-0 pt-1">{{userInfo.bannedUser}}</h5>
+                    <p class="text-muted mb-0">Zablokowani użytkownicy</p>
+                </div>
+            </div>
+        </div>
+ 
+    </div>
+    <!-- end row -->
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive project-list">
+                        <table class="table project-table table-centered table-nowrap">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nr</th>
+                                    <th scope="col">Login</th>
+                                    <th scope="col">E-mail</th>
+                                    <th scope="col">Data utworzenia</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Akcja</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let element of userInfo.userInfoDtoList; let i = index">
+                                <tr>
+                                    <th scope="row">{{i + 1}}</th>
+                                    <td>{{element.login}}</td>
+                                    <td>{{element.email}}</td>
+                                    <td>{{element.createdAt}}</td>
+                                    <td>
+                                        <span *ngIf="element.active; else elseBlock" class="text-success font-12"> Aktywny</span>
+                                        <ng-template #elseBlock>
+                                            <span class="text-danger font-12">Zbanowany</span>
+                                        </ng-template>
+
+                                    </td>
+                                
+                                
+
+                                    <td>
+                                        <div class="action" *ngIf="element.active; else blockElse">
+                                            <a href="#" class="text-danger"> Zablokuj</a>
+                                        </div>
+                                        <ng-template #blockElse>
+                                            <div class="action">
+                                                <a href="#" class="text-success font-12">Aktywuj</a>
+                                            </div>
+                                        </ng-template>
+                                    </td>
+                                </tr>
+
+                                
+
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+</div>

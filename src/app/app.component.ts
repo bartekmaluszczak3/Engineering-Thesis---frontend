@@ -10,12 +10,12 @@ import { AuthService } from './services/auth/auth.service';
 })
 export class AppComponent {
   title = 'front';
-  router: Router
-  authService: AuthService
   exForm!: FormGroup
-  constructor(router: Router, authService: AuthService){
-    this.router = router;
-    this.authService = authService
+  login:any = localStorage.getItem('token')
+  role: any = this.authService.getRole().subscribe(res =>{
+    this.role = res
+  })
+  constructor(private router: Router, private authService: AuthService){
     this.exForm = new FormGroup({
       search: new FormControl(null)
     })

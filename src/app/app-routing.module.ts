@@ -15,6 +15,8 @@ import { RegisterComponent } from './register/register.component';
 import { SearchComponent } from './search/search.component';
 import { EditImagesComponent } from './edit-images/edit-images.component';
 import { ErrorComponent } from './error/error.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminUsersComponent } from './admin-users/admin-users.component';
 
 const routes: Routes = [
   {
@@ -46,7 +48,8 @@ const routes: Routes = [
   },
   {
     path: 'my_announcement',
-    component: MyAnnouncementComponent
+    component: MyAnnouncementComponent,
+    canActivate: [LoggedUser]
   },
   {
     path: 'edit_announcement/:id',
@@ -83,6 +86,14 @@ const routes: Routes = [
     component: EditImagesComponent,
     canActivate: [LoggedUser]
   },
+  {
+    path: 'admin',
+    component: AdminComponent
+  },
+  {
+    path: 'admin/users',
+    component: AdminUsersComponent
+  }
 ];
 
 @NgModule({

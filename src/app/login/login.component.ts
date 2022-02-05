@@ -29,9 +29,11 @@ export class LoginComponent implements OnInit {
     this.authService.loginUser(loginDto).subscribe(
       res => {
         localStorage.setItem('token', res.token)
+        if(res.role == "USER")
+          this.router.navigate(['/home'])
+        else
+          this.router.navigate(['/admin'])
         
-        this.router.navigate(['/home'])
-
       },
       err => {
         console.log(err)

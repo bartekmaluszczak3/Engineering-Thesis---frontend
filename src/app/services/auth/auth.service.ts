@@ -38,6 +38,11 @@ export class AuthService {
     return this.http.get<any>(url, {headers})
   }
 
+  getRole(){
+    let headers = getHeaders()
+    let url = this.baseUrl + "/get_role"
+    return this.http.get<any>(url, {headers})
+  }
   getCity(){
     let headers = getHeaders()
     return this.http.get<any>(this.baseUrl + "/get_city", {headers})

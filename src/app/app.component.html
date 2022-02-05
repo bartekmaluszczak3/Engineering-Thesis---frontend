@@ -16,7 +16,7 @@
   </form>
   
       
-  <button *ngIf="this.authService.loggenIn(); else elseBlock"class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
+  <button *ngIf="login; else elseBlock"class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
     aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i
         class="fa fa-bars" style="color:rgb(255, 255, 240);"></i></span></button>
   <ng-template #elseBlock>
@@ -24,21 +24,29 @@
   </ng-template>
   <div class="collapse navbar-collapse" id="navbarSupportedContent1">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/add">Dodaj ogloszenie <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/my_announcement">Moje ogloszenia</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/edit_profile">Edytuj profil</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/favourite">Ulubione</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/home" (click)="logout()">Wyloguj</a>
-      </li>
+      <div *ngIf="this.role == 'USER'; else adminNav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/add">Dodaj ogloszenie <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/my_announcement">Moje ogloszenia</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/edit_profile">Edytuj profil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/favourite">Ulubione</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/home" (click)="logout()">Wyloguj</a>
+        </li>
+      </div>
+      <ng-template #adminNav>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin">Panel administratora</a>
+        </li>
+      </ng-template>
+  
     </ul>
 
   </div>

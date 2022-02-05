@@ -21,6 +21,8 @@ import { SearchComponent } from './search/search.component';
 import { LoggedUser } from './guard/LoggedUser';
 import { EditImagesComponent } from './edit-images/edit-images.component';
 import { ErrorComponent } from './error/error.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminUsersComponent } from './admin-users/admin-users.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +40,8 @@ import { ErrorComponent } from './error/error.component';
     SearchComponent,
     EditImagesComponent,
     ErrorComponent,
+    AdminComponent,
+    AdminUsersComponent,
   ],
   imports: [
     FormsModule,
