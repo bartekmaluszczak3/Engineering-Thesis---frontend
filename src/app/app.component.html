@@ -24,7 +24,7 @@
   </ng-template>
   <div class="collapse navbar-collapse" id="navbarSupportedContent1">
     <ul class="navbar-nav mr-auto">
-      <div *ngIf="this.role == 'USER'; else adminNav">
+      <div>
         <li class="nav-item active">
           <a class="nav-link" href="/add">Dodaj ogloszenie <span class="sr-only">(current)</span></a>
         </li>
@@ -41,11 +41,9 @@
           <a class="nav-link" href="/home" (click)="logout()">Wyloguj</a>
         </li>
       </div>
-      <ng-template #adminNav>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="this.role == 'ADMIN' ">
           <a class="nav-link" href="/admin">Panel administratora</a>
         </li>
-      </ng-template>
   
     </ul>
 

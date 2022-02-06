@@ -16,7 +16,7 @@ export class AdminService {
     return this.http.get<any>(url, {headers})
   }
 
-  banUser(login:any){
+  ban_user(login:any){
     let headers = getHeaders()
     let url = this.baseUrl + "/ban_user?login=" + login
     return this.http.put<any>(url, {headers})
@@ -25,6 +25,12 @@ export class AdminService {
   get_info(){
     let headers = getHeaders()
     let url = this.baseUrl + "/get_info"
+    return this.http.get<any>(url, {headers})
+  }
+
+  get_announcement(){
+    let headers = getHeaders()
+    let url = this.baseUrl + "/get_announcement"
     return this.http.get<any>(url, {headers})
   }
 }

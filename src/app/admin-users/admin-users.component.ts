@@ -20,4 +20,9 @@ export class AdminUsersComponent implements OnInit {
    
   }
 
+  banUser(login:any){
+    this.adminService.ban_user(login).subscribe()
+    window.location.reload();
+  }
+
 }

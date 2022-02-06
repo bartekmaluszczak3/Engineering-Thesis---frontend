@@ -13,6 +13,7 @@ export class AppComponent {
   exForm!: FormGroup
   login:any = localStorage.getItem('token')
   role: any = this.authService.getRole().subscribe(res =>{
+    console.log(this.role)
     this.role = res
   })
   constructor(private router: Router, private authService: AuthService){

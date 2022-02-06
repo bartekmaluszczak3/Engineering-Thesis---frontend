@@ -23,6 +23,7 @@ import { EditImagesComponent } from './edit-images/edit-images.component';
 import { ErrorComponent } from './error/error.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
+import { AdminAnnouncementComponent } from './admin-announcement/admin-announcement.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +43,7 @@ import { AdminUsersComponent } from './admin-users/admin-users.component';
     ErrorComponent,
     AdminComponent,
     AdminUsersComponent,
+    AdminAnnouncementComponent,
   ],
   imports: [
     FormsModule,

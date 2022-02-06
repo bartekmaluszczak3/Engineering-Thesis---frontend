@@ -61,26 +61,18 @@
                                         <ng-template #elseBlock>
                                             <span class="text-danger font-12">Zbanowany</span>
                                         </ng-template>
-
                                     </td>
-                                
-                                
-
                                     <td>
                                         <div class="action" *ngIf="element.active; else blockElse">
-                                            <a href="#" class="text-danger"> Zablokuj</a>
+                                            <a href="" (click)="banUser(element.login)" class="text-danger"> Zablokuj</a>
                                         </div>
                                         <ng-template #blockElse>
                                             <div class="action">
-                                                <a href="#" class="text-success font-12">Aktywuj</a>
+                                                <a style="cursor: pointer" (click)="banUser(element.login)" class="text-success font-12">Aktywuj</a>
                                             </div>
                                         </ng-template>
                                     </td>
-                                </tr>
-
-                                
-
-                                
+                                </tr>                                
                             </tbody>
                         </table>
                     </div>

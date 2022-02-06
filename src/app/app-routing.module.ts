@@ -17,6 +17,7 @@ import { EditImagesComponent } from './edit-images/edit-images.component';
 import { ErrorComponent } from './error/error.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
+import { AdminAnnouncementComponent } from './admin-announcement/admin-announcement.component';
 const routes: Routes = [
   {
     path: 'home', 
@@ -92,6 +93,10 @@ const routes: Routes = [
   {
     path: 'admin/users',
     component: AdminUsersComponent
+  },
+  {
+    path: 'admin/announcement',
+    component: AdminAnnouncementComponent
   }
 ];
 
