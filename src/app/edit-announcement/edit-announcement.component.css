@@ -11,9 +11,6 @@
     margin-bottom: 5px;
     font-size: 16px;
 }
-#Highlighted-form.no-placeholder .form-group label{
-    display:block;
-}
 
 #Highlighted-form .controls {
     padding:0;
@@ -27,51 +24,28 @@
 #Highlighted-form .form-control {
 	display:inline;
     background:#fff;
-    border:none;
-    border-radius:5px;
     outline:none;
-    box-shadow:0 4px 0 rgba(0,0,0,0.05);
-    height:52px;
+    box-shadow:0 2px 0 rgb(141, 111, 161);;
+    min-height:45px;
     font-size:18px;
+    font-weight:300;
     line-height:32px;
-    color:#aaa;
-    font-weight:400;
-    padding-left:64px;
+    padding-left:60px;
+    border: none;
 	vertical-align:top;
-}
-
-#Highlighted-form .form-group.half-width{
-    width:40%;
-    float:left;
-}
-
-#Highlighted-form .form-group{
-    position:relative;
-}
-
-
-#Highlighted-form .form-group [class*=fa].active{
-    color:#ccc;
-}
-
-#Highlighted-form.no-placeholder .form-group [class*=fa]{
-    top:30px;
 }
 
 #Highlighted-form textarea.form-control {
     height:auto;
-	max-width:100%;
 	min-width:100%;
-    font-size:18px;
+    max-width:100%;
+    font-size:22px;
     font-weight:400;
     line-height:24px;
 	padding-top:14px;
 	vertical-align:top;
 }
-#Highlighted-form .form-control:focus {
-    outline:none;
-    box-shadow:0 4px 0 rgba(0,0,0,0.05);
-}
+
 .form-control-invalid{
     color: red;
     font-size: 16px;

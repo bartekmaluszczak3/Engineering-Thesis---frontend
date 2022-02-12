@@ -2,24 +2,30 @@
 <div class="">
     <div style="margin-top: 50px;">
         <div class="col-sm-8 col-md-6" style="margin: 50px;" >
-            <form [formGroup]="exForm" method="post">
-                <div class="mb-4">
-                    <label  class="form-label" for="phone">Telefon</label>
-                    <input  formControlName="phone" type="number" class="form-control" id="phone">
-                    <small *ngIf="exForm.get('phone')?.hasError('required') && exForm.get('phone')?.touched" class="form-control-invalid">Telefon jest wymagany</small>
-                </div>
-                <div class="mb-4"> 
-                    <label class="form-label" for="price">Miasto</label>
-                    <select formControlName="city" class="form-control" id="city" name="city">
-                        <option *ngFor="let element of cityArray">{{element}}</option>
-                    </select>                    
-                    <small *ngIf="exForm.get('price')?.invalid && exForm.get('price')?.touched" class="form-control-invalid">Miasto jest wymagane</small>                
-                </div>
-
-                <div style="margin-top: 50px; width: 30%;">
-                    <button  [disabled]="exForm.invalid" type="submit" class="btn btn-success w-100" (click)="edit()">Dodaj</button>
-                </div>
-            </form>
+            <div id="Highlighted-form" class="col-sm-11">
+                <form [formGroup]="exForm" method="post">
+                    <div class="form-group">
+                        <div class="controls">
+                           <div class="label">Telefon</div>
+                           <input formControlName="phone" class="form-control  Highlighted-label" type="text">
+                           <small *ngIf="exForm.get('phone')?.hasError('phone') && exForm.get('phone')?.touched" class="form-control-invalid">Tytuł jest wymagany</small>
+                         </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="controls">
+                            <div class="label">Miasto</div>
+                            <select  formControlName="city" class="form-control  Highlighted-label">
+                               <option style="display: none;"></option>
+                               <option *ngFor="let element of cityArray">{{element}}</option>
+                            </select>
+                        </div>
+                     </div>
+                    <div style="margin-top: 50px; width: 30%;">
+                        <button  [disabled]="exForm.invalid" type="submit" class="btn btn-success w-100" (click)="edit()">Dodaj</button>
+                    </div>
+                </form>
+            </div>
+    
         </div>
     </div>
 </div>

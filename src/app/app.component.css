@@ -21,3 +21,17 @@
     .dark-teal-text {
     color: #004d40;
     }
+
+.nav-bar{
+    background-color: rgb(106, 177, 144);
+}
+
+.search-button{
+    font-size: 20px;
+     margin-left: 20px;
+}
+
+.login{
+    color: rgb(255, 255, 240); 
+    font-size: 20px
+}

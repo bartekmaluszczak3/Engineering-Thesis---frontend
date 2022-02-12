@@ -2,9 +2,9 @@
 	<div class="container">
   
 		<form [formGroup]="exForm">
-			<div class="row" style="background-color: rgb(242, 244, 245);">
+			<div class="row background">
 				<aside class="col-sm-4">
-			<div class="card" style="margin: 20px;">
+			<div class="card card filter-card">
 				<article class="card-group-item">
 					<header class="card-header">
 						<h6 class="title">Typ </h6>
@@ -16,30 +16,30 @@
 							  <span class="form-check-label">
 								Auto
 							  </span>
-							</label> <!-- form-check.// -->
+							</label>
 							
 							<label class="form-check">
 							  <input formControlName="type"class="form-check-input" type="radio" value="Motocykl" name="type">
 							  <span class="form-check-label">
 								Motocykl
 							  </span>
-							</label>  <!-- form-check.// -->
+							</label>  
 							<label class="form-check">
 							  <input formControlName="type"class="form-check-input" type="radio" value="Przyczepa" name="type">
 							  <span class="form-check-label">
 								Przyczepa
 							  </span>
 			
-							</label>  <!-- form-check.// -->
+							</label>  
 							<label class="form-check">
 								<input formControlName="type"class="form-check-input" type="radio" value="Ciezarowka" name="type">
 								<span class="form-check-label">
 								  Ciężarówka
 								</span>
-							  </label>  <!-- form-check.// -->
-						</div> <!-- card-body.// -->
+							  </label>  
+						</div> 
 					</div>
-				</article> <!-- card-group-item.// -->
+				</article> 
 				<article class="card-group-item">
 					<header class="card-header">
 						<h6 class="title">Stan </h6>
@@ -58,14 +58,14 @@
 							Nieuszkodzony
 						  </span>
 						</label>
-						</div> <!-- card-body.// -->
+						</div> 
 					</div>
-				</article> <!-- card-group-item.// -->
-			</div> <!-- card.// -->
-				</aside> <!-- col.// -->
+				</article> 
+			</div> 
+				</aside> 
 			
 				<aside class="col-sm-4">
-					<div class="card" style="margin: 20px;">
+					<div class="card filter-card">
 						<article class="card-group-item">
 							<header class="card-header">
 								<h6 class="title">Marka </h6>
@@ -97,18 +97,18 @@
 									</select>
 								</div>
 								</div>
-								</div> <!-- card-body.// -->
+								</div> 
 							</div>
 							
-						</article> <!-- card-group-item.// -->
+						</article> 
 						
-					</div> <!-- card.// -->
+					</div> 
 					
-					<button  class="btn btn-success w-100 card" type="button" style="max-width: 50%; margin: auto; background-color: rgb(106, 177, 144);" (click)="search()">Wyszukaj</button>
+					<button  class="btn btn-success w-100 card search-button" type="button" (click)="search()">Wyszukaj</button>
 					
-						</aside> <!-- col.// -->
+						</aside> 
 				<aside class="col-sm-4">
-			<div class="card" style="margin: 20px;">
+			<div class="card filter-card">
 				<article class="card-group-item">
 					<header class="card-header">
 						<h6 class="title">Cena </h6>
@@ -125,9 +125,9 @@
 						  <input formControlName="maxPrice" type="number" class="form-control" placeholder="">
 						</div>
 						</div>
-						</div> <!-- card-body.// -->
+						</div> 
 					</div>
-				</article> <!-- card-group-item.// -->
+				</article> 
 				<article class="card-group-item">
 					<header class="card-header">
 						<h6 class="title">Rok</h6>
@@ -144,20 +144,20 @@
 						  <input formControlName="maxYear" type="number" class="form-control" placeholder="">
 						</div>
 						</div>
-						</div> <!-- card-body.// -->
+						</div> 
 					</div>
-				</article> <!-- card-group-item.// -->
-			</div> <!-- card.// -->
-				</aside> <!-- col.// -->
-			</div> <!-- row.// -->
+				</article> 
+			</div> 
+				</aside> 
+			</div>  
 		
 		</form>
 		<div *ngIf ="this.isLogged"class="container d-flex justify-content-center history" > Hisotria</div>
 		  <div class="container d-flex justify-content-center">
 
 			<div class="row">
-				<div class="col-md-10" *ngFor="let element of announcementArray" style="margin-bottom: 50px;">
-					<div class="card card-body" style="background-color: rgb(242, 244, 245);">
+				<div class="col-md-10 row-card" *ngFor="let element of announcementArray">
+					<div class="card card-body background">
 						<div class="media align-items-center flex-column flex-lg-row">
 							<div class="mr-2 mb-3 mb-lg-0">  <img [src]="element.imagesBytes[0]" width="150" height="150" alt=""> </div>
 							<div class="media-body">

@@ -21,9 +21,6 @@ export class MyAnnouncementComponent implements OnInit {
         })
         console.log(this.announcementArray)
       },
-      err=>{
-        console.log(err)
-      }
     )
   }
   delete(id:any){
