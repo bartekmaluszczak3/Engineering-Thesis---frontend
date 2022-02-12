@@ -16,7 +16,7 @@ export class AnnouncementComponent implements OnInit {
   isOwner: boolean = true
   favourite: boolean = false
   phone: any
-  startIndex: number = 0
+  modalIndex: number = 0
   announcement: any =   this.announcementService.getById(this.id).subscribe(
     res=>{
       this.announcement = res
@@ -75,6 +75,6 @@ export class AnnouncementComponent implements OnInit {
   }
   
   change(id:any){
-    this.startIndex = id
+    this.modalIndex = id
   }
 }
